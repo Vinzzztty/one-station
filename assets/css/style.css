@@ -1,0 +1,220 @@
+body,
+.navbar,
+.nav-link,
+.glass-btn {
+    font-family: "Poppins", sans-serif;
+}
+
+/* Initial transparent navbar */
+.glass-navbar {
+    background: transparent;
+    transition: background 0.4s, box-shadow 0.4s;
+}
+
+/* Glassmorphic style when scrolled */
+.glass-navbar.scrolled {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+/* Nav links and hover styling */
+.glass-navbar .nav-link {
+    color: #000;
+    font-size: 0.9rem; /* Smaller font size */
+    transition: color 0.3s;
+}
+
+.glass-navbar .nav-link:hover {
+    color: #007bff;
+}
+
+/* Button styling */
+.glass-btn {
+    background: linear-gradient(135deg, #ffdb00, #ffd700);
+    border: none;
+    color: #000;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 25px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+    transition: all 0.3s ease-in-out;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.glass-btn:hover {
+    background: linear-gradient(135deg, #ffd700, #ffdb00);
+    color: #333;
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
+}
+
+.glass-btn:active {
+    transform: scale(1);
+    box-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
+}
+
+.slider {
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    padding: 20px 0; /* Add vertical padding for spacing */
+}
+
+.slider-items {
+    display: flex;
+    align-items: center;
+    animation: scroll 30s linear infinite;
+}
+
+.logo-item {
+    width: 150px; /* Adjust logo width as needed */
+    height: auto;
+    margin: 0 20px; /* Add space between logos */
+    padding: 10px; /* Add padding around logos */
+    transition: transform 0.3s ease-in-out;
+}
+
+.logo-item:hover {
+    transform: scale(1.1); /* Slight scale effect on hover */
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.background-container {
+    background-color: rgba(255, 255, 255, 0.17); /* Semi-transparent */
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Slightly adjusted shadow */
+    backdrop-filter: blur(18px); /* Glassmorphism effect */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 40px; /* Add padding for content spacing */
+}
+
+.highlight {
+    color: #ff8f00;
+}
+
+.service-card {
+    background: none; /* Transparent background */
+    padding: 20px;
+    border-radius: 12px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.custom-btn {
+    background-color: #ffdb00;
+    border-color: #ffdb00;
+    color: #000;
+    font-weight: bold;
+}
+
+.why-choose-us-container {
+    background-color: rgba(255, 255, 255, 0.17); /* Semi-transparent */
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Adjusted shadow */
+    backdrop-filter: blur(18px); /* Glassmorphism effect */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 40px; /* Add padding for content spacing */
+}
+
+.highlight {
+    color: #ff8f00;
+}
+
+.service-item {
+    padding: 20px;
+    background: none; /* Transparent */
+    border-radius: 12px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.service-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.text-black {
+    color: #000;
+}
+
+.visi-misi-img {
+    margin-top: 20px;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
+}
+
+.highlight {
+    color: #ff8f00;
+}
+
+.mission-list {
+    padding-left: 20px; /* Indent for list items */
+    list-style-type: disc; /* Use disc bullets */
+    margin-bottom: 0;
+    font-size: 1rem;
+    color: #333; /* Dark gray for better readability */
+}
+
+.mission-list li {
+    margin-bottom: 10px;
+    line-height: 1.5; /* Add spacing between lines */
+}
+
+h2,
+h6 {
+    color: #333; /* Use a consistent dark color for text */
+}
+
+p {
+    color: #555; /* Slightly lighter color for paragraph text */
+}
+
+.footer {
+    padding: 40px 0;
+    border-top: 1px solid #ddd; /* Light border for separation */
+}
+
+.footer-logo {
+    width: 150px; /* Adjust size as needed */
+    height: auto;
+    border-radius: 8px; /* Rounded corners for a sleek look */
+}
+
+.footer .list-inline-item a {
+    font-size: 1rem;
+    color: #555; /* Dark gray for better readability */
+    transition: color 0.3s;
+}
+
+.footer .list-inline-item a:hover {
+    color: #ff8f00; /* Highlight color on hover */
+}
+
+.social-links i {
+    font-size: 1.5rem; /* Adjust icon size */
+    transition: color 0.3s;
+}
+
+.social-links i:hover {
+    color: #ff8f00; /* Change color on hover */
+}
+
+.text-muted {
+    color: #7d7987;
+}
