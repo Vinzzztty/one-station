@@ -131,7 +131,27 @@
         </section>
         <div class="container mt-5 pt-4">
             <div id="blogDetail" class="card shadow-sm"></div>
+            <div class="container mt-5">
+                <div class="row">
+                    <!-- Main Image Section -->
+                    <div class="col-md-6">
+                        <div class="main-image-container">
+                            <img id="mainImage" src="" class="img-fluid" alt="Main Product Image">
+                        </div>
+                    </div>
+                    <!-- Thumbnails Section -->
+                    <div class="col-md-6">
+                        <h3 id="productTitle">Product Title</h3>
+                        <p id="productDescription">Product description goes here...</p>
+                        <div class="mt-4">
+                            <h5>Other Views:</h5>
+                            <div class="row" id="thumbnailsContainer"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+        
 
         <section class="footer mt-5">
             <div class="container">
@@ -221,98 +241,114 @@
                 </div>
             </div>
         </section>
-
+       
+        <!-- JavaScript to change main image on thumbnail click -->
         <script>
-            async function fetchBlogDetail() {
-                const urlParams = new URLSearchParams(window.location.search);
-                const postId = urlParams.get("id");
+            function changeMainImage(src) {
+                document.getElementById('mainImage').src = src;
+            }
+        </script>
 
-                if (!postId) {
-                    document.getElementById(
-                        "blogDetail"
-                    ).innerHTML = `<div class="alert alert-danger">Blog ID not provided.</div>`;
+<script>
+    function changeMainImage(src) {
+        document.getElementById('mainImage').src = src;
+    }
+
+    async function fetchProductDetail() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const postId = urlParams.get("id");
+
+        if (!postId) {
+            document.getElementById("blogDetail").innerHTML = `<div class="alert alert-danger">Blog ID not provided.</div>`;
+            return;
+        }
+
+        try {
+            const response = await axios.get(`https://be-company-profile-pieter.vercel.app/api/posts/${postId}`);
+            const post = response.data.data;
+
+            document.getElementById('mainImage').src = post.thumbnail || 'assets/img/illustrations/sample_main.jpg';
+            document.getElementById('productTitle').textContent = post.title || "Product Title";
+            document.getElementById('productDescription').textContent = post.content || "Product description goes here...";
+
+            // Handle additional images
+            const images = [post.images1, post.images2, post.images3, post.images4, post.images5].filter(Boolean);
+            const thumbnailsContainer = document.getElementById("thumbnailsContainer");
+
+            if (images.length > 0) {
+                thumbnailsContainer.innerHTML = images.map((image, index) => `
+                    <div class="col-3">
+                        <img src="${image}" class="img-thumbnail clickable-thumbnail" alt="Thumbnail ${index + 1}" onclick="changeMainImage('${image}')">
+                    </div>
+                `).join('');
+            } else {
+                thumbnailsContainer.innerHTML = `<p class="text-muted">No additional images available.</p>`;
+            }
+
+            document.getElementById("blogDetail").innerHTML = `
+                <div class="card mb-4">
+                    <img src="${post.thumbnail}" class="card-img-top" alt="Thumbnail">
+                    <div class="card-body">
+                        <h3 class="card-title">${post.title}</h3>
+                        <p class="card-text">${post.content}</p>
+                        <p class="text-muted">Author: ${post.author}</p>
+                        <p class="text-muted">Tags: ${Array.isArray(post.tags) ? post.tags.join(", ") : "No tags available"}</p>
+                    </div>
+                </div>
+            `;
+        } catch (error) {
+            console.error("Error fetching product detail:", error);
+            document.getElementById("blogDetail").innerHTML = `<div class="alert alert-danger">Failed to load the product details. Please try again later.</div>`;
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", fetchProductDetail);
+</script>
+         <script>
+            function changeMainImage(src) {
+                document.getElementById('mainImage').src = src;
+            }
+
+            async function fetchProductDetail() {
+                const urlParams = new URLSearchParams(window.location.search);
+                const productId = urlParams.get("id");
+
+                if (!productId) {
+                    document.getElementById("productDetail").innerHTML = `<div class="alert alert-danger">Product ID not provided.</div>`;
                     return;
                 }
 
                 try {
-                    const response = await axios.get(
-                        `https://be-company-profile-pieter.vercel.app/api/posts/${postId}`
-                    );
-                    const post = response.data.data; // Accessing the 'data' field within the response
+                    const response = await axios.get(`https://be-company-profile-pieter.vercel.app/api/products/${productId}`);
+                    const product = response.data.data;
 
-                    // Safely handle the tags property
-                    const tags = Array.isArray(post.tags)
-                        ? post.tags.join(", ")
-                        : "No tags available";
+                    // Set main product details
+                    document.getElementById("mainImage").src = product.mainImage;
+                    document.getElementById("productTitle").innerText = product.title;
+                    document.getElementById("productDescription").innerText = product.description;
 
-                    // Handle additional images (filter out null/undefined images)
-                    const images = [
-                        post.images1,
-                        post.images2,
-                        post.images3,
-                        post.images4,
-                        post.images5,
-                    ].filter(Boolean);
+                    // Handle additional images for thumbnails
+                    const images = [product.image1, product.image2, product.image3, product.image4].filter(Boolean);
+                    const thumbnailContainer = document.getElementById("thumbnailContainer");
+                    images.forEach((image, index) => {
+                        const thumbnail = document.createElement("img");
+                        thumbnail.src = image;
+                        thumbnail.classList.add("img-thumbnail", "clickable-thumbnail", "col-3");
+                        thumbnail.alt = `Thumbnail ${index + 1}`;
+                        thumbnail.onclick = () => changeMainImage(image);
+                        thumbnailContainer.appendChild(thumbnail);
+                    });
 
-                    // Generate HTML for a slider if images are available
-                    let sliderHtml = "";
-                    if (images.length > 0) {
-                        sliderHtml = `
-                            <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
-                                <div class="carousel-inner">
-                                    ${images
-                                        .map(
-                                            (image, index) => `
-                                        <div class="carousel-item ${
-                                            index === 0 ? "active" : ""
-                                        }">
-                                            <img src="${image}" class="d-block w-100 additional-image" alt="Slide ${
-                                                index + 1
-                                            }">
-                                        </div>
-                                    `
-                                        )
-                                        .join("")}
-                                </div>
-                                <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-                                <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button>
-                            </div>
-                        `;
-                    } else {
-                        sliderHtml = `<p class="text-muted">No additional images available.</p>`;
-                    }
-
-                    document.getElementById("blogDetail").innerHTML = `
-                        <div class="card mb-4">
-                            <img src="${post.thumbnail}" class="card-img-top" alt="Thumbnail">
-                            <div class="card-body">
-                                <h3 class="card-title">${post.title}</h3>
-                                <p class="card-text">${post.content}</p>
-                                <p class="text-muted">Author: ${post.author}</p>
-                                <p class="text-muted">Tags: ${tags}</p>
-                                <div class="additional-images mt-3">
-                                    ${sliderHtml}
-                                </div>
-                            </div>
-                        </div>
-                    `;
                 } catch (error) {
-                    console.error("Error fetching blog post:", error);
-                    document.getElementById(
-                        "blogDetail"
-                    ).innerHTML = `<div class="alert alert-danger">Failed to load the blog post. Please try again later.</div>`;
+                    console.error("Error fetching product:", error);
+                    document.getElementById("productDetail").innerHTML = `<div class="alert alert-danger">Failed to load product details. Please try again later.</div>`;
                 }
             }
 
-            // Fetch the blog post when the page loads
-            document.addEventListener("DOMContentLoaded", fetchBlogDetail);
+            // Fetch the product details when the page loads
+            document.addEventListener("DOMContentLoaded", fetchProductDetail);
         </script>
+
 
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

@@ -28,6 +28,7 @@
         />
 
         <link rel="stylesheet" href="assets/css/service.css" />
+        <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
     </head>
     <body>
         <!-- Navbar -->
@@ -1101,6 +1102,12 @@
                         navbar.classList.remove("scrolled");
                     }
                 });
+            });
+        </script>
+           <script>
+            AOS.init({
+                duration: 1000,  // Animation duration in milliseconds
+                once: true       // Animation occurs only once while scrolling down
             });
         </script>
     </body>
