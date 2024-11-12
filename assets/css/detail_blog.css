@@ -67,13 +67,6 @@ body {
     padding: 0;
 }
 
-/* Container styling
-.container {
-    max-width: 800px;
-    margin: auto;
-    padding: 2rem;
-} */
-
 /* Card styling */
 .card {
     border: none;
@@ -84,7 +77,7 @@ body {
 }
 
 .card-img-top {
-    height: 500px; /* Fixed height for a consistent look */
+    height: 100%; /* Fixed height for a consistent look */
     object-fit: cover;
 }
 
@@ -130,6 +123,37 @@ body {
 
     .card-text {
         font-size: 1rem;
+    }
+}
+
+/* Styling for additional images in the slider */
+.carousel-item img.additional-image {
+    transform: scale(0.8); /* Scale down to 80% of the original size */
+    object-fit: cover; /* Ensure image scales proportionally */
+    border-radius: 8px; /* Rounded corners for a smoother look */
+    margin-bottom: 15px; /* Space below images */
+}
+
+/* Custom color for carousel control buttons */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #000000; /* Change this to your desired color */
+    border-radius: 50%; /* Optional: round shape for a more polished look */
+    width: 30px; /* Optional: adjust size */
+    height: 30px; /* Optional: adjust size */
+}
+
+/* Optional hover effect for carousel buttons */
+.carousel-control-prev-icon:hover,
+.carousel-control-next-icon:hover {
+    background-color: #000000; /* Lighter color or different color on hover */
+    transition: background-color 0.3s; /* Smooth transition effect */
+}
+
+/* Media query to adjust image size for smaller screens */
+@media (max-width: 768px) {
+    .carousel-item img.additional-image {
+        height: 200px; /* Smaller height for responsive view */
     }
 }
 
