@@ -129,9 +129,22 @@ body {
 /* Styling for additional images in the slider */
 .carousel-item img.additional-image {
     transform: scale(0.8); /* Scale down to 80% of the original size */
-    object-fit: cover; /* Ensure image scales proportionally */
+    max-width: 100%; /* Ensure images do not exceed the width of their container */
+    max-height: 500px; /* Adjust the height for a more flexible display */
+    width: auto; /* Allow the width to adjust based on the image's aspect ratio */
+    height: auto; /* Allow the height to adjust based on the image's aspect ratio */
+    object-fit: contain; /* Display the full image without cropping */
     border-radius: 8px; /* Rounded corners for a smoother look */
     margin-bottom: 15px; /* Space below images */
+    display: block; /* Center the image */
+    margin-left: auto; /* Center align */
+    margin-right: auto; /* Center align */
+}
+
+/* Optional hover effect */
+.carousel-item img.additional-image:hover {
+    transform: scale(0.85); /* Slightly enlarge on hover */
+    transition: transform 0.3s; /* Smooth transition */
 }
 
 /* Custom color for carousel control buttons */
@@ -153,7 +166,8 @@ body {
 /* Media query to adjust image size for smaller screens */
 @media (max-width: 768px) {
     .carousel-item img.additional-image {
-        height: 200px; /* Smaller height for responsive view */
+        max-height: 200px; /* Smaller height for responsive view */
+        transform: scale(0.7); /* Scale down for smaller screens */
     }
 }
 
