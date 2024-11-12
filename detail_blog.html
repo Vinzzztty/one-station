@@ -129,25 +129,29 @@
                 </div>
             </nav>
         </section>
-        <div class="container mt-5 pt-4">
-            <div id="blogDetail" class="card shadow-sm"></div>
-            <div class="container mt-5">
-                <div class="row">
-                    <!-- Main Image Section -->
-                    <div class="col-md-6">
-                        <div class="main-image-container">
-                            <img id="mainImage" src="" class="img-fluid" alt="Main Product Image">
-                        </div>
-                    </div>
-                    <!-- Thumbnails Section -->
-                    <div class="col-md-6">
-                        <h3 id="productTitle">Product Title</h3>
-                        <p id="productDescription">Product description goes here...</p>
-                        <div class="mt-4">
-                            <h5>Other Views:</h5>
-                            <div class="row" id="thumbnailsContainer"></div>
-                        </div>
-                    </div>
+      
+        
+        <div class="container mt-5">
+            <div id="loadingSpinner" class="text-center my-5" style="display: none;">
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+            <div class="row" id="content">
+                <!-- Left Section: Main Image -->
+                <div class="col-md-6 image-section" id="mainImageContainer">
+                    <!-- JavaScript will update this background image -->
+                </div>
+    
+                <!-- Right Section: Product Details -->
+                <div class="col-md-6 content-section">
+                    <h1 id="productTitle" class="product-title">Product Title</h1>
+                    <p id="productDescription" class="product-description">Description goes here...</p>
+                    <p id="productAuthor" class="product-author">Author: Author Name</p>
+                    <p id="productTags" class="product-tags">Tags: Sample Tags</p>
+    
+                    <!-- Thumbnails below the main details -->
+                    <div class="thumbnail-container mt-4 d-flex gap-2" id="thumbnailsContainer"></div>
                 </div>
             </div>
         </div>
@@ -248,106 +252,55 @@
                 document.getElementById('mainImage').src = src;
             }
         </script>
-
-<script>
-    function changeMainImage(src) {
-        document.getElementById('mainImage').src = src;
-    }
-
-    async function fetchProductDetail() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const postId = urlParams.get("id");
-
-        if (!postId) {
-            document.getElementById("blogDetail").innerHTML = `<div class="alert alert-danger">Blog ID not provided.</div>`;
-            return;
-        }
-
-        try {
-            const response = await axios.get(`https://be-company-profile-pieter.vercel.app/api/posts/${postId}`);
-            const post = response.data.data;
-
-            document.getElementById('mainImage').src = post.thumbnail || 'assets/img/illustrations/sample_main.jpg';
-            document.getElementById('productTitle').textContent = post.title || "Product Title";
-            document.getElementById('productDescription').textContent = post.content || "Product description goes here...";
-
-            // Handle additional images
-            const images = [post.images1, post.images2, post.images3, post.images4, post.images5].filter(Boolean);
-            const thumbnailsContainer = document.getElementById("thumbnailsContainer");
-
-            if (images.length > 0) {
-                thumbnailsContainer.innerHTML = images.map((image, index) => `
-                    <div class="col-3">
-                        <img src="${image}" class="img-thumbnail clickable-thumbnail" alt="Thumbnail ${index + 1}" onclick="changeMainImage('${image}')">
-                    </div>
-                `).join('');
-            } else {
-                thumbnailsContainer.innerHTML = `<p class="text-muted">No additional images available.</p>`;
-            }
-
-            document.getElementById("blogDetail").innerHTML = `
-                <div class="card mb-4">
-                    <img src="${post.thumbnail}" class="card-img-top" alt="Thumbnail">
-                    <div class="card-body">
-                        <h3 class="card-title">${post.title}</h3>
-                        <p class="card-text">${post.content}</p>
-                        <p class="text-muted">Author: ${post.author}</p>
-                        <p class="text-muted">Tags: ${Array.isArray(post.tags) ? post.tags.join(", ") : "No tags available"}</p>
-                    </div>
-                </div>
-            `;
-        } catch (error) {
-            console.error("Error fetching product detail:", error);
-            document.getElementById("blogDetail").innerHTML = `<div class="alert alert-danger">Failed to load the product details. Please try again later.</div>`;
-        }
-    }
-
-    document.addEventListener("DOMContentLoaded", fetchProductDetail);
-</script>
-         <script>
-            function changeMainImage(src) {
-                document.getElementById('mainImage').src = src;
-            }
-
-            async function fetchProductDetail() {
-                const urlParams = new URLSearchParams(window.location.search);
-                const productId = urlParams.get("id");
-
-                if (!productId) {
-                    document.getElementById("productDetail").innerHTML = `<div class="alert alert-danger">Product ID not provided.</div>`;
-                    return;
+              <script>
+                async function fetchProductDetail() {
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const postId = urlParams.get("id");
+        
+                    if (!postId) {
+                        document.getElementById("productTitle").innerText = "Product ID not provided.";
+                        return;
+                    }
+                    document.getElementById("loadingSpinner").style.display = "block";
+                    document.getElementById("productContent").style.display = "none";
+        
+                    try {
+                        const response = await axios.get(`https://be-company-profile-pieter.vercel.app/api/posts/${postId}`);
+                        const post = response.data.data;
+        
+                        document.getElementById("mainImageContainer").style.backgroundImage = `url(${post.thumbnail || 'assets/img/illustrations/sample_main.jpg'})`;
+                        document.getElementById("productTitle").innerText = post.title || "Product Title";
+                        document.getElementById("productDescription").innerText = post.content || "Product description goes here...";
+                        document.getElementById("productAuthor").innerText = `Author: ${post.author || "Unknown"}`;
+                        document.getElementById("productTags").innerText = `Tags: ${Array.isArray(post.tags) ? post.tags.join(", ") : "No tags available"}`;
+        
+                        // Additional images for the thumbnails
+                        const images = [post.images1, post.images2, post.images3, post.images4, post.images5].filter(Boolean);
+                        const thumbnailsContainer = document.getElementById("thumbnailsContainer");
+                        if (images.length > 0) {
+                            thumbnailsContainer.innerHTML = images.map(image => `
+                                <img src="${image}" class="img-thumbnail" style="width: 80px; height: 80px;" onclick="changeMainImage('${image}')">
+                            `).join('');
+                        } else {
+                            thumbnailsContainer.innerHTML = `<p class="text-muted">No additional images available.</p>`;
+                        }
+                        document.getElementById("loadingSpinner").style.display = "none";
+                        document.getElementById("content").style.display = "block";
+                    } catch (error) {
+                        console.error("Error fetching product detail:", error);
+                        document.getElementById("productTitle").innerText = "Failed to load product details. Please try again later.";
+                        document.getElementById("loadingSpinner").style.display = "none";
+                    }
                 }
-
-                try {
-                    const response = await axios.get(`https://be-company-profile-pieter.vercel.app/api/products/${productId}`);
-                    const product = response.data.data;
-
-                    // Set main product details
-                    document.getElementById("mainImage").src = product.mainImage;
-                    document.getElementById("productTitle").innerText = product.title;
-                    document.getElementById("productDescription").innerText = product.description;
-
-                    // Handle additional images for thumbnails
-                    const images = [product.image1, product.image2, product.image3, product.image4].filter(Boolean);
-                    const thumbnailContainer = document.getElementById("thumbnailContainer");
-                    images.forEach((image, index) => {
-                        const thumbnail = document.createElement("img");
-                        thumbnail.src = image;
-                        thumbnail.classList.add("img-thumbnail", "clickable-thumbnail", "col-3");
-                        thumbnail.alt = `Thumbnail ${index + 1}`;
-                        thumbnail.onclick = () => changeMainImage(image);
-                        thumbnailContainer.appendChild(thumbnail);
-                    });
-
-                } catch (error) {
-                    console.error("Error fetching product:", error);
-                    document.getElementById("productDetail").innerHTML = `<div class="alert alert-danger">Failed to load product details. Please try again later.</div>`;
+        
+                function changeMainImage(src) {
+                    document.getElementById("mainImageContainer").style.backgroundImage = `url(${src})`;
                 }
-            }
+        
+                document.addEventListener("DOMContentLoaded", fetchProductDetail);
+            </script>
 
-            // Fetch the product details when the page loads
-            document.addEventListener("DOMContentLoaded", fetchProductDetail);
-        </script>
+
 
 
         <script
