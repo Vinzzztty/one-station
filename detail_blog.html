@@ -51,6 +51,42 @@
 
         <link rel="stylesheet" href="assets/css/detail_blog.css" />
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <style>
+            body {
+                font-family: 'Poppins', sans-serif;
+            }
+            .hero-thumbnail {
+                height: 40vh;
+                background-size: cover;
+                background-position: center;
+                border-radius: 8px;
+                margin-top: 100px;
+                margin-bottom: 2rem;
+            }
+            .content-section {
+                padding: 2rem;
+                background-color: #f8f9fa;
+                border-radius: 8px;
+                margin-bottom: 1.5rem;
+            }
+            .image-details {
+                display: flex;
+                gap: 1rem;
+                flex-wrap: wrap;
+            }
+            .image-details img {
+                width: 100px;
+                height: 100px;
+                object-fit: cover;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: transform 0.3s;
+            }
+            .image-details img:hover {
+                transform: scale(1.1);
+            }
+           
+        </style>    
     </head>
     <body>
         <section class="navbar mb-5 pb-3">
@@ -129,32 +165,51 @@
                 </div>
             </nav>
         </section>
-      
-        
-        <div class="container mt-5">
-            <div id="loadingSpinner" class="text-center my-5" style="display: none;">
-                <div class="spinner-border" role="status">
-                    <span class="visually-hidden">Loading...</span>
-                </div>
-            </div>
-            <div class="row" id="content">
-                <!-- Left Section: Main Image -->
-                <div class="col-md-6 image-section" id="mainImageContainer">
-                    <!-- JavaScript will update this background image -->
-                </div>
-    
-                <!-- Right Section: Product Details -->
-                <div class="col-md-6 content-section">
-                    <h1 id="productTitle" class="product-title">Product Title</h1>
-                    <p id="productDescription" class="product-description">Description goes here...</p>
-                    <p id="productAuthor" class="product-author">Author: Author Name</p>
-                    <p id="productTags" class="product-tags">Tags: Sample Tags</p>
-    
-                    <!-- Thumbnails below the main details -->
-                    <div class="thumbnail-container mt-4 d-flex gap-2" id="thumbnailsContainer"></div>
-                </div>
-            </div>
+        <!-- Hero Thumbnail Section -->
+<div class="container mt-6">
+    <div id="heroThumbnail" class="hero-thumbnail" style="background-image: url('assets/img/illustrations/sample_main.jpg');"></div>
+</div>
+
+<!-- Main Content -->
+<div class="container">
+    <div id="loadingSpinner" class="text-center my-5" style="display: none;">
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
         </div>
+    </div>
+
+    <div id="content" style="display: none;">
+        <!-- Blog Content -->
+        <div class="content-section">
+            <span style="color: #ff8f00;">
+            <h1 id="productTitle">Loading...</h1></span>
+            <p id="productDescription" class="lead">Description loading...</p>
+        </div>
+        <div class="content-section">
+            <h5>Image Detail</h5>
+            <!-- Main Image Display -->
+            <img id="mainImage" src="assets/img/illustrations/sample_main.jpg" alt="Main Image" class="img-fluid mb-3" style="width:50%; height: auto; object-fit:cover;">
+        </div>
+
+    <!-- Image Details Section -->
+    <div class="content-section">
+        <h5>Image Gallery</h5>
+        <div class="image-details" id="imageDetailsContainer">
+            <!-- Thumbnails for additional images will be injected here -->
+        </div>
+    </div>
+
+        <!-- Blog Metadata -->
+        <div class="content-section">
+            <p id="productAuthorMeta" class="text-muted">Author: Loading...</p>
+            <p id="productTags" class="text-muted">Tags: Loading...</p>
+        </div>
+          
+    </div>
+</div>
+
+        
+        
         
 
         <section class="footer mt-5">
@@ -253,51 +308,46 @@
             }
         </script>
               <script>
-                async function fetchProductDetail() {
+                async function fetchBlogDetail() {
                     const urlParams = new URLSearchParams(window.location.search);
                     const postId = urlParams.get("id");
         
                     if (!postId) {
-                        document.getElementById("productTitle").innerText = "Product ID not provided.";
+                        document.getElementById("productTitle").innerText = "Blog ID not provided.";
                         return;
                     }
+                    
                     document.getElementById("loadingSpinner").style.display = "block";
-                    document.getElementById("productContent").style.display = "none";
         
                     try {
                         const response = await axios.get(`https://be-company-profile-pieter.vercel.app/api/posts/${postId}`);
                         const post = response.data.data;
         
-                        document.getElementById("mainImageContainer").style.backgroundImage = `url(${post.thumbnail || 'assets/img/illustrations/sample_main.jpg'})`;
-                        document.getElementById("productTitle").innerText = post.title || "Product Title";
-                        document.getElementById("productDescription").innerText = post.content || "Product description goes here...";
-                        document.getElementById("productAuthor").innerText = `Author: ${post.author || "Unknown"}`;
+                        document.getElementById("heroThumbnail").style.backgroundImage = `url(${post.thumbnail || 'assets/img/illustrations/sample_main.jpg'})`;
+                        document.getElementById("mainImage").src= post.thumbnail;
+                        document.getElementById("productTitle").innerText = post.title || "Blog Title";
+                        document.getElementById("productDescription").innerText = post.content || "Blog description goes here...";
+                        document.getElementById("productAuthorMeta").innerText = `Author: ${post.author || "Unknown"}`;
                         document.getElementById("productTags").innerText = `Tags: ${Array.isArray(post.tags) ? post.tags.join(", ") : "No tags available"}`;
         
-                        // Additional images for the thumbnails
                         const images = [post.images1, post.images2, post.images3, post.images4, post.images5].filter(Boolean);
-                        const thumbnailsContainer = document.getElementById("thumbnailsContainer");
+                        const imageDetailsContainer = document.getElementById("imageDetailsContainer");
                         if (images.length > 0) {
-                            thumbnailsContainer.innerHTML = images.map(image => `
-                                <img src="${image}" class="img-thumbnail" style="width: 80px; height: 80px;" onclick="changeMainImage('${image}')">
-                            `).join('');
+                            imageDetailsContainer.innerHTML = images.map(img => `<img src="${img}" alt="Detail Image" onclick="changeMainImage('${img}')" />`).join('');
                         } else {
-                            thumbnailsContainer.innerHTML = `<p class="text-muted">No additional images available.</p>`;
+                            imageDetailsContainer.innerHTML = `<p class="text-muted">No additional images available.</p>`;
                         }
+        
                         document.getElementById("loadingSpinner").style.display = "none";
                         document.getElementById("content").style.display = "block";
                     } catch (error) {
-                        console.error("Error fetching product detail:", error);
-                        document.getElementById("productTitle").innerText = "Failed to load product details. Please try again later.";
+                        console.error("Error fetching blog details:", error);
+                        document.getElementById("productTitle").innerText = "Failed to load blog details. Please try again later.";
                         document.getElementById("loadingSpinner").style.display = "none";
                     }
                 }
         
-                function changeMainImage(src) {
-                    document.getElementById("mainImageContainer").style.backgroundImage = `url(${src})`;
-                }
-        
-                document.addEventListener("DOMContentLoaded", fetchProductDetail);
+                document.addEventListener("DOMContentLoaded", fetchBlogDetail);
             </script>
 
 
