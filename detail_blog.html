@@ -330,7 +330,7 @@
                         document.getElementById("productAuthorMeta").innerText = `Author: ${post.author || "Unknown"}`;
                         document.getElementById("productTags").innerText = `Tags: ${Array.isArray(post.tags) ? post.tags.join(", ") : "No tags available"}`;
         
-                        const images = [post.images1, post.images2, post.images3, post.images4, post.images5].filter(Boolean);
+                        const images = [post.thumbnail, post.images1, post.images2, post.images3, post.images4, post.images5].filter(Boolean);
                         const imageDetailsContainer = document.getElementById("imageDetailsContainer");
                         if (images.length > 0) {
                             imageDetailsContainer.innerHTML = images.map(img => `<img src="${img}" alt="Detail Image" onclick="changeMainImage('${img}')" />`).join('');
