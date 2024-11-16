@@ -53,7 +53,7 @@
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <style>
             body {
-                font-family: 'Poppins', sans-serif;
+                font-family: "Poppins", sans-serif;
             }
             .hero-thumbnail {
                 height: 40vh;
@@ -85,8 +85,7 @@
             .image-details img:hover {
                 transform: scale(1.1);
             }
-           
-        </style>    
+        </style>
     </head>
     <body>
         <section class="navbar mb-5 pb-3">
@@ -166,51 +165,67 @@
             </nav>
         </section>
         <!-- Hero Thumbnail Section -->
-<div class="container mt-6">
-    <div id="heroThumbnail" class="hero-thumbnail" style="background-image: url('assets/img/illustrations/sample_main.jpg');"></div>
-</div>
-
-<!-- Main Content -->
-<div class="container">
-    <div id="loadingSpinner" class="text-center my-5" style="display: none;">
-        <div class="spinner-border" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-    </div>
-
-    <div id="content" style="display: none;">
-        <!-- Blog Content -->
-        <div class="content-section">
-            <span style="color: #ff8f00;">
-            <h1 id="productTitle">Loading...</h1></span>
-            <p id="productDescription" class="lead">Description loading...</p>
-        </div>
-        <div class="content-section">
-            <h5>Image Detail</h5>
-            <!-- Main Image Display -->
-            <img id="mainImage" src="assets/img/illustrations/sample_main.jpg" alt="Main Image" class="img-fluid mb-3" style="width:50%; height: auto; object-fit:cover;">
+        <div class="container mt-6">
+            <div
+                id="heroThumbnail"
+                class="hero-thumbnail"
+                style="
+                    background-image: url('assets/img/illustrations/sample_main.jpg');
+                "
+            ></div>
         </div>
 
-    <!-- Image Details Section -->
-    <div class="content-section">
-        <h5>Image Gallery</h5>
-        <div class="image-details" id="imageDetailsContainer">
-            <!-- Thumbnails for additional images will be injected here -->
-        </div>
-    </div>
+        <!-- Main Content -->
+        <div class="container">
+            <div
+                id="loadingSpinner"
+                class="text-center my-5"
+                style="display: none"
+            >
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
 
-        <!-- Blog Metadata -->
-        <div class="content-section">
-            <p id="productAuthorMeta" class="text-muted">Author: Loading...</p>
-            <p id="productTags" class="text-muted">Tags: Loading...</p>
-        </div>
-          
-    </div>
-</div>
+            <div id="content" style="display: none">
+                <!-- Blog Content -->
+                <div class="content-section">
+                    <span style="color: #ff8f00">
+                        <h1 id="productTitle">Loading...</h1></span
+                    >
+                    <p id="productDescription" class="lead">
+                        Description loading...
+                    </p>
+                </div>
+                <div class="content-section">
+                    <h5>Image Detail</h5>
+                    <!-- Main Image Display -->
+                    <img
+                        id="mainImage"
+                        src="assets/img/illustrations/sample_main.jpg"
+                        alt="Main Image"
+                        class="img-fluid mb-3"
+                        style="width: 50%; height: auto; object-fit: cover"
+                    />
+                </div>
 
-        
-        
-        
+                <!-- Image Details Section -->
+                <div class="content-section">
+                    <h5>Image Gallery</h5>
+                    <div class="image-details" id="imageDetailsContainer">
+                        <!-- Thumbnails for additional images will be injected here -->
+                    </div>
+                </div>
+
+                <!-- Blog Metadata -->
+                <div class="content-section">
+                    <p id="productAuthorMeta" class="text-muted">
+                        Author: Loading...
+                    </p>
+                    <p id="productTags" class="text-muted">Tags: Loading...</p>
+                </div>
+            </div>
+        </div>
 
         <section class="footer mt-5">
             <div class="container">
@@ -232,36 +247,29 @@
                             <li class="list-inline-item me-3">
                                 <a
                                     class="text-dark text-decoration-none"
-                                    href="#!"
+                                    href="index.html"
                                     >Home</a
                                 >
                             </li>
                             <li class="list-inline-item me-3">
                                 <a
                                     class="text-dark text-decoration-none"
-                                    href="#!"
+                                    href="service.html"
                                     >Services</a
                                 >
                             </li>
                             <li class="list-inline-item me-3">
                                 <a
                                     class="text-dark text-decoration-none"
-                                    href="#!"
+                                    href="blog.html"
                                     >Case Studies</a
                                 >
                             </li>
                             <li class="list-inline-item me-3">
                                 <a
                                     class="text-dark text-decoration-none"
-                                    href="#!"
+                                    href="index.html#whoweare"
                                     >Who We Are</a
-                                >
-                            </li>
-                            <li class="list-inline-item me-3">
-                                <a
-                                    class="text-dark text-decoration-none"
-                                    href="#!"
-                                    >Insight</a
                                 >
                             </li>
                         </ul>
@@ -276,22 +284,18 @@
                     <div class="col-md-6 text-md-end">
                         <ul class="list-unstyled list-inline social-links">
                             <li class="list-inline-item me-3">
-                                <a href="#!" class="text-dark">
-                                    <i class="bi bi-facebook"></i>
+                                <a
+                                    href="mailto:onestationone@gmail.com"
+                                    class="text-dark"
+                                >
+                                    <i class="bi bi-envelope"></i>
                                 </a>
                             </li>
                             <li class="list-inline-item me-3">
-                                <a href="#!" class="text-dark">
-                                    <i class="bi bi-twitter"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline-item me-3">
-                                <a href="#!" class="text-dark">
-                                    <i class="bi bi-hash"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline-item me-3">
-                                <a href="#!" class="text-dark">
+                                <a
+                                    href="https://www.instagram.com/onestationone/"
+                                    class="text-dark"
+                                >
                                     <i class="bi bi-instagram"></i>
                                 </a>
                             </li>
@@ -300,58 +304,89 @@
                 </div>
             </div>
         </section>
-       
+
         <!-- JavaScript to change main image on thumbnail click -->
         <script>
             function changeMainImage(src) {
-                document.getElementById('mainImage').src = src;
+                document.getElementById("mainImage").src = src;
             }
         </script>
-              <script>
-                async function fetchBlogDetail() {
-                    const urlParams = new URLSearchParams(window.location.search);
-                    const postId = urlParams.get("id");
-        
-                    if (!postId) {
-                        document.getElementById("productTitle").innerText = "Blog ID not provided.";
-                        return;
-                    }
-                    
-                    document.getElementById("loadingSpinner").style.display = "block";
-        
-                    try {
-                        const response = await axios.get(`https://be-company-profile-pieter.vercel.app/api/posts/${postId}`);
-                        const post = response.data.data;
-        
-                        document.getElementById("heroThumbnail").style.backgroundImage = `url(${post.thumbnail || 'assets/img/illustrations/sample_main.jpg'})`;
-                        document.getElementById("mainImage").src= post.thumbnail;
-                        document.getElementById("productTitle").innerText = post.title || "Blog Title";
-                        document.getElementById("productDescription").innerText = post.content || "Blog description goes here...";
-                        document.getElementById("productAuthorMeta").innerText = `Author: ${post.author || "Unknown"}`;
-                        document.getElementById("productTags").innerText = `Tags: ${Array.isArray(post.tags) ? post.tags.join(", ") : "No tags available"}`;
-        
-                        const images = [post.thumbnail, post.images1, post.images2, post.images3, post.images4, post.images5].filter(Boolean);
-                        const imageDetailsContainer = document.getElementById("imageDetailsContainer");
-                        if (images.length > 0) {
-                            imageDetailsContainer.innerHTML = images.map(img => `<img src="${img}" alt="Detail Image" onclick="changeMainImage('${img}')" />`).join('');
-                        } else {
-                            imageDetailsContainer.innerHTML = `<p class="text-muted">No additional images available.</p>`;
-                        }
-        
-                        document.getElementById("loadingSpinner").style.display = "none";
-                        document.getElementById("content").style.display = "block";
-                    } catch (error) {
-                        console.error("Error fetching blog details:", error);
-                        document.getElementById("productTitle").innerText = "Failed to load blog details. Please try again later.";
-                        document.getElementById("loadingSpinner").style.display = "none";
-                    }
+        <script>
+            async function fetchBlogDetail() {
+                const urlParams = new URLSearchParams(window.location.search);
+                const postId = urlParams.get("id");
+
+                if (!postId) {
+                    document.getElementById("productTitle").innerText =
+                        "Blog ID not provided.";
+                    return;
                 }
-        
-                document.addEventListener("DOMContentLoaded", fetchBlogDetail);
-            </script>
 
+                document.getElementById("loadingSpinner").style.display =
+                    "block";
 
+                try {
+                    const response = await axios.get(
+                        `https://be-company-profile-pieter.vercel.app/api/posts/${postId}`
+                    );
+                    const post = response.data.data;
 
+                    document.getElementById(
+                        "heroThumbnail"
+                    ).style.backgroundImage = `url(${
+                        post.thumbnail ||
+                        "assets/img/illustrations/sample_main.jpg"
+                    })`;
+                    document.getElementById("mainImage").src = post.thumbnail;
+                    document.getElementById("productTitle").innerText =
+                        post.title || "Blog Title";
+                    document.getElementById("productDescription").innerText =
+                        post.content || "Blog description goes here...";
+                    document.getElementById(
+                        "productAuthorMeta"
+                    ).innerText = `Author: ${post.author || "Unknown"}`;
+                    document.getElementById("productTags").innerText = `Tags: ${
+                        Array.isArray(post.tags)
+                            ? post.tags.join(", ")
+                            : "No tags available"
+                    }`;
+
+                    const images = [
+                        post.thumbnail,
+                        post.images1,
+                        post.images2,
+                        post.images3,
+                        post.images4,
+                        post.images5,
+                    ].filter(Boolean);
+                    const imageDetailsContainer = document.getElementById(
+                        "imageDetailsContainer"
+                    );
+                    if (images.length > 0) {
+                        imageDetailsContainer.innerHTML = images
+                            .map(
+                                (img) =>
+                                    `<img src="${img}" alt="Detail Image" onclick="changeMainImage('${img}')" />`
+                            )
+                            .join("");
+                    } else {
+                        imageDetailsContainer.innerHTML = `<p class="text-muted">No additional images available.</p>`;
+                    }
+
+                    document.getElementById("loadingSpinner").style.display =
+                        "none";
+                    document.getElementById("content").style.display = "block";
+                } catch (error) {
+                    console.error("Error fetching blog details:", error);
+                    document.getElementById("productTitle").innerText =
+                        "Failed to load blog details. Please try again later.";
+                    document.getElementById("loadingSpinner").style.display =
+                        "none";
+                }
+            }
+
+            document.addEventListener("DOMContentLoaded", fetchBlogDetail);
+        </script>
 
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

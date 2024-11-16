@@ -10,14 +10,38 @@
             integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
             crossorigin="anonymous"
         />
-        <link rel="apple-touch-icon" sizes="180x180" href="assets/img/illustrations/logowhite.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="assets/img/illustrations/logowhite.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="assets/img/illustrations/logowhite.png">
-        <link rel="shortcut icon" type="image/x-icon" href="assets/img/illustrations/logowhite.png">
-        <link rel="manifest" href="assets/img/favicons/manifest.json">
-        <meta name="msapplication-TileImage" content="assets/img/illustrations/logonew.png">
-        <meta name="theme-color" content="#ffffff">
-        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="assets/img/illustrations/logowhite.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="assets/img/illustrations/logowhite.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="assets/img/illustrations/logowhite.png"
+        />
+        <link
+            rel="shortcut icon"
+            type="image/x-icon"
+            href="assets/img/illustrations/logowhite.png"
+        />
+        <link rel="manifest" href="assets/img/favicons/manifest.json" />
+        <meta
+            name="msapplication-TileImage"
+            content="assets/img/illustrations/logonew.png"
+        />
+        <meta name="theme-color" content="#ffffff" />
+        <link
+            rel="stylesheet"
+            href="https://unpkg.com/swiper/swiper-bundle.min.css"
+        />
         <link
             href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
             rel="stylesheet"
@@ -107,24 +131,31 @@
                 </div>
             </nav>
         </section>
-        
+
         <section class="blog-section mt-4 mb-3 pt-4">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center mx-auto mb-4 mb-md-5 mt-4">
                     <h2 class="mb-2 fw-bold text-highlight">All Blog Posts</h2>
                 </div>
             </div>
-            
+
             <!-- Loading spinner -->
-            <div id="loadingSpinner" class="text-center my-5" style="display: none;">
+            <div
+                id="loadingSpinner"
+                class="text-center my-5"
+                style="display: none"
+            >
                 <div class="spinner-border text-primary" role="status">
                     <span class="visually-hidden">Loading...</span>
                 </div>
             </div>
-            
+
             <!-- Blog posts container -->
             <div class="container mt-2">
-                <div id="blogPosts" class="row row-cols-1 row-cols-md-2 g-4"></div>
+                <div
+                    id="blogPosts"
+                    class="row row-cols-1 row-cols-md-2 g-4"
+                ></div>
             </div>
         </section>
 
@@ -148,36 +179,29 @@
                             <li class="list-inline-item me-3">
                                 <a
                                     class="text-dark text-decoration-none"
-                                    href="#!"
+                                    href="index.html"
                                     >Home</a
                                 >
                             </li>
                             <li class="list-inline-item me-3">
                                 <a
                                     class="text-dark text-decoration-none"
-                                    href="#!"
+                                    href="service.html"
                                     >Services</a
                                 >
                             </li>
                             <li class="list-inline-item me-3">
                                 <a
                                     class="text-dark text-decoration-none"
-                                    href="#!"
+                                    href="blog.html"
                                     >Case Studies</a
                                 >
                             </li>
                             <li class="list-inline-item me-3">
                                 <a
                                     class="text-dark text-decoration-none"
-                                    href="#!"
+                                    href="index.html#whoweare"
                                     >Who We Are</a
-                                >
-                            </li>
-                            <li class="list-inline-item me-3">
-                                <a
-                                    class="text-dark text-decoration-none"
-                                    href="#!"
-                                    >Insight</a
                                 >
                             </li>
                         </ul>
@@ -192,22 +216,18 @@
                     <div class="col-md-6 text-md-end">
                         <ul class="list-unstyled list-inline social-links">
                             <li class="list-inline-item me-3">
-                                <a href="#!" class="text-dark">
-                                    <i class="bi bi-facebook"></i>
+                                <a
+                                    href="mailto:onestationone@gmail.com"
+                                    class="text-dark"
+                                >
+                                    <i class="bi bi-envelope"></i>
                                 </a>
                             </li>
                             <li class="list-inline-item me-3">
-                                <a href="#!" class="text-dark">
-                                    <i class="bi bi-twitter"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline-item me-3">
-                                <a href="#!" class="text-dark">
-                                    <i class="bi bi-hash"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline-item me-3">
-                                <a href="#!" class="text-dark">
+                                <a
+                                    href="https://www.instagram.com/onestationone/"
+                                    class="text-dark"
+                                >
                                     <i class="bi bi-instagram"></i>
                                 </a>
                             </li>
@@ -236,52 +256,66 @@
             });
         </script>
 
-<script>
-    async function fetchBlogPosts() {
-        // Show the spinner
-        document.getElementById("loadingSpinner").style.display = "block";
+        <script>
+            async function fetchBlogPosts() {
+                // Show the spinner
+                document.getElementById("loadingSpinner").style.display =
+                    "block";
 
-        try {
-            // Fetch data from the API
-            const response = await axios.get("https://be-company-profile-pieter.vercel.app/api");
-            console.log("Response data:", response.data);
+                try {
+                    // Fetch data from the API
+                    const response = await axios.get(
+                        "https://be-company-profile-pieter.vercel.app/api"
+                    );
+                    console.log("Response data:", response.data);
 
-            // Hide the spinner after data is loaded
-            document.getElementById("loadingSpinner").style.display = "none";
+                    // Hide the spinner after data is loaded
+                    document.getElementById("loadingSpinner").style.display =
+                        "none";
 
-            const posts = response.data.data || [];
-            const blogContainer = document.getElementById("blogPosts");
-            blogContainer.innerHTML = ""; // Clear any previous content
+                    const posts = response.data.data || [];
+                    const blogContainer = document.getElementById("blogPosts");
+                    blogContainer.innerHTML = ""; // Clear any previous content
 
-            if (posts.length === 0) {
-                blogContainer.innerHTML = `<div class="alert alert-warning">No blog posts found.</div>`;
-                return;
-            }
+                    if (posts.length === 0) {
+                        blogContainer.innerHTML = `<div class="alert alert-warning">No blog posts found.</div>`;
+                        return;
+                    }
 
-            posts.forEach((post) => {
-                const postElement = document.createElement("div");
-                postElement.classList.add("col");
-                postElement.innerHTML = `
+                    posts.forEach((post) => {
+                        const postElement = document.createElement("div");
+                        postElement.classList.add("col");
+                        postElement.innerHTML = `
                     <div class="card mb-4 shadow-sm h-100">
-                        <img src="${post.thumbnail || 'placeholder.jpg'}" class="card-img-top" alt="Thumbnail">
+                        <img src="${
+                            post.thumbnail || "placeholder.jpg"
+                        }" class="card-img-top" alt="Thumbnail">
                         <div class="card-body">
                             <h5 class="card-title">${post.title}</h5>
-                            <p class="card-text">${post.content.substring(0, 150)}...</p>
-                            <p class="text-muted">Tags: ${post.tags.join(", ")}</p>
-                            <a href="detail_blog.html?id=${post._id}" class="btn btn-primary">Read More</a>
+                            <p class="card-text">${post.content.substring(
+                                0,
+                                150
+                            )}...</p>
+                            <p class="text-muted">Tags: ${post.tags.join(
+                                ", "
+                            )}</p>
+                            <a href="detail_blog.html?id=${
+                                post._id
+                            }" class="btn btn-primary">Read More</a>
                         </div>
                     </div>`;
-                blogContainer.appendChild(postElement);
-            });
-        } catch (error) {
-            console.error("Error fetching blog posts:", error);
-            document.getElementById("loadingSpinner").style.display = "none";
-            document.getElementById("blogPosts").innerHTML = `
+                        blogContainer.appendChild(postElement);
+                    });
+                } catch (error) {
+                    console.error("Error fetching blog posts:", error);
+                    document.getElementById("loadingSpinner").style.display =
+                        "none";
+                    document.getElementById("blogPosts").innerHTML = `
                 <div class="alert alert-danger">Failed to load blog posts. Please try again later.</div>`;
-        }
-    }
+                }
+            }
 
-    document.addEventListener("DOMContentLoaded", fetchBlogPosts);
-</script>
+            document.addEventListener("DOMContentLoaded", fetchBlogPosts);
+        </script>
     </body>
 </html>
