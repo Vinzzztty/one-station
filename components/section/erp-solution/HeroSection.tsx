@@ -64,35 +64,33 @@ export default async function HeroSection() {
 
           <ElegantReveal delay={100} direction="up">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 text-foreground">
-              Custom{" "}
+              Smart Features to Make Your ERP{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">
-                ERP Systems
-              </span>{" "}
-              to Scale Your Business.
+                Work Smarter
+              </span>
             </h1>
           </ElegantReveal>
 
           <ElegantReveal delay={200} direction="up">
             <p className="text-lg text-muted mb-8 max-w-lg">
-              We build enterprise resource planning software for companies.
-              From Operations to the Back Office, we create ERP systems that scale with your business.
+              Reduce up to 70% of manual tasks with proven automation modules. No AI magic - just robust technology solving real business problems.
             </p>
           </ElegantReveal>
 
           <ElegantReveal delay={300} direction="up">
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
-                href="/contact"
+                href="#portfolio"
                 className="bg-purple-600 hover:bg-purple-500 text-white px-8 py-4 rounded-xl font-bold transition-all flex items-center justify-center gap-2 group shadow-lg shadow-purple-900/20 hover:shadow-purple-700/40 hover:-translate-y-1"
               >
-                Free ERP Consultation
+                Explore Automation
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
-                href="/service"
+                href="#calculator"
                 className="bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 px-8 py-4 rounded-xl font-bold transition-all flex items-center justify-center gap-2 hover:-translate-y-1"
               >
-                View ERP Case Studies
+                Calculate Savings
               </Link>
             </div>
           </ElegantReveal>

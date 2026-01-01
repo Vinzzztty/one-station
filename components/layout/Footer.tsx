@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="bg-gray-900 text-gray-400 py-12 px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-4 gap-8 mb-8">
+        <div className="grid md:grid-cols-3 gap-8 mb-8">
           {/* Logo & Description */}
           <div>
             <div className="flex items-center gap-2 mb-4">
@@ -53,34 +53,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 2: ERP Solution */}
-          <div>
-            <h4 className="text-white font-semibold mb-4">ERP Solution</h4>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <Link href="/erp-solution" className="hover:text-white transition-colors">
-                  Custom ERP Development
-                </Link>
-              </li>
-              <li>
-                <Link href="/erp-solution" className="hover:text-white transition-colors">
-                  ERP Mobile Apps
-                </Link>
-              </li>
-              <li>
-                <Link href="/erp-solution" className="hover:text-white transition-colors">
-                  ERP AI & Automation
-                </Link>
-              </li>
-              <li>
-                <Link href="/erp-solution" className="hover:text-white transition-colors">
-                  Implementasi & Support
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Column 3: Services */}
+          {/* Column 2: Services */}
           <div>
             <h4 className="text-white font-semibold mb-4">Services</h4>
             <ul className="space-y-2 text-sm">

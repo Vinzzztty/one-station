@@ -54,34 +54,24 @@ export default async function HeroSection() {
   ];
 
   return (
-    <section className="relative pt-20 pb-32 overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+    <section className="relative pt-8 pb-6 sm:pt-8 sm:pb-10 overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
       {/* Background Decorations */}
-      {/* Background Decorations */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] pointer-events-none">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] pointer-events-none">
         <div className="w-full h-full bg-purple-600/10 rounded-full blur-[120px] animate-pulse-slow" />
       </div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 pointer-events-none">
+      <div className="absolute bottom-0 right-0 w-72 h-72 pointer-events-none">
         <div className="w-full h-full bg-blue-600/5 rounded-full blur-[100px] animate-float-slow" />
       </div>
-      <div className="absolute top-1/4 left-0 w-64 h-64 pointer-events-none">
+      <div className="absolute top-1/4 left-0 w-48 h-48 pointer-events-none">
         <div className="w-full h-full bg-cyan-600/5 rounded-full blur-[80px] animate-float" />
       </div>
 
       {/* Main Content - Centered */}
-      <div className="relative mx-auto max-w-5xl px-6 text-center">
-        {/* Badge */}
-        <ElegantReveal delay={0} direction="down">
-          <div className="mx-auto mb-8 inline-flex items-center gap-2 rounded-full bg-purple-500/10 border border-purple-500/20 px-4 py-2 backdrop-blur-sm">
-            <Zap className="w-3 h-3 text-purple-400" />
-            <span className="text-sm font-semibold text-purple-400 uppercase tracking-wide">
-              Leading Digital Innovation
-            </span>
-          </div>
-        </ElegantReveal>
+      <div className="relative mx-auto max-w-4xl px-10 text-center">
 
         {/* Heading */}
         <ElegantReveal delay={200} direction="up">
-          <h1 className="text-5xl font-extrabold leading-tight text-foreground sm:text-6xl md:text-7xl">
+          <h1 className="text-3xl font-extrabold leading-tight text-foreground sm:text-4xl md:text-5xl">
             Custom {" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">
               ERP Systems
@@ -92,25 +82,24 @@ export default async function HeroSection() {
 
         {/* Description */}
         <ElegantReveal delay={400} direction="up">
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted sm:text-xl">
-            We build enterprise resource planning software for companies.
-            From Operations to the Back Office, we create ERP systems that scale with your business.
+          <p className="mx-auto mt-2 sm:mt-4 max-w-2xl text-xs sm:text-sm leading-relaxed text-muted">
+            We build enterprise resource planning software for companies. From Operations to the Back Office, we create ERP systems that scale with your business.
           </p>
         </ElegantReveal>
 
         {/* CTA Buttons */}
         <ElegantReveal delay={600} direction="up">
-          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <div className="mt-3 sm:mt-5 flex flex-row items-center justify-center gap-2 w-full">
             <Link
               href="/contact"
-              className="bg-purple-600 hover:bg-purple-500 text-white px-8 py-4 rounded-xl font-bold transition-all flex items-center justify-center gap-2 group shadow-lg shadow-purple-900/20 hover:shadow-purple-700/40 hover:-translate-y-1"
+              className="bg-purple-600 hover:bg-purple-500 text-white px-3 py-2 sm:px-6 sm:py-3 rounded-xl font-bold transition-all flex items-center justify-center gap-1 sm:gap-2 group shadow-lg shadow-purple-900/20 hover:shadow-purple-700/40 hover:-translate-y-1 text-[10px] xs:text-xs sm:text-sm whitespace-nowrap"
             >
               Free ERP Consultation
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
               href="/erp-solution"
-              className="bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 px-8 py-4 rounded-xl font-bold transition-all flex items-center justify-center gap-2 hover:-translate-y-1"
+              className="bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 px-3 py-2 sm:px-6 sm:py-3 rounded-xl font-bold transition-all flex items-center justify-center gap-1 sm:gap-2 hover:-translate-y-1 text-[10px] xs:text-xs sm:text-sm whitespace-nowrap"
             >
               View ERP Case Studies
             </Link>
@@ -119,13 +108,13 @@ export default async function HeroSection() {
       </div>
 
       {/* Featured Work Carousel */}
-      <div className="mx-auto max-w-7xl px-6 mt-30">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 mt-6 sm:mt-12">
         <ElegantReveal delay={800} direction="up">
-          <div className="text-center mb-10">
-            <span className="text-purple-400 font-bold uppercase tracking-[0.2em] text-xs mb-2 block">
+          <div className="text-center mb-3 sm:mb-6">
+            <span className="text-purple-400 font-bold uppercase tracking-[0.2em] text-xs mb-1 block">
               Our Portfolio
             </span>
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground">
+            <h2 className="text-xl md:text-2xl font-bold text-foreground">
               Projects & ERP Systems We've Built
             </h2>
           </div>

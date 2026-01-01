@@ -241,10 +241,10 @@ export default function ContactForm() {
             <label className="block text-sm text-gray-500">Budget Selection*</label>
             <div className="flex flex-wrap gap-6">
               {[
-                { label: "<200 mio", value: "<200 mio" },
-                { label: "200-500 mio", value: "200-500 mio" },
-                { label: "500 mio - 1 bio", value: "500 mio - 1 bio" },
-                { label: ">1 bio", value: ">1 bio" },
+                { label: "<50 mio", value: "<50 mio" },
+                { label: "50-100 mio", value: "50-100 mio" },
+                { label: "100-250 mio", value: "100-250 mio" },
+                { label: ">250 mio", value: ">250 mio" },
               ].map((option) => (
                 <label
                   key={option.value}

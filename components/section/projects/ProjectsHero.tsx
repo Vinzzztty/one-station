@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function ProjectsHero() {
     return (
-        <section className="relative pt-32 pb-20 overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+        <section className="relative pt-8 pb-4 overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
             {/* Background Decorations */}
             <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-[600px] h-[600px] pointer-events-none">
                 <div className="w-full h-full bg-purple-600/10 rounded-full blur-[120px] animate-pulse-slow" />

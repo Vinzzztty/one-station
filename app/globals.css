@@ -122,6 +122,10 @@ html {
   width: max-content;
 }
 
+.animate-scroll-infinite {
+  animation: scroll 30s linear infinite;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
