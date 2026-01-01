@@ -1,37 +1,37 @@
 import { CheckCircle, ChevronRight, Globe } from "lucide-react";
 import Image from "next/image";
-import Reveal from "@/components/ui/Reveal";
+import ElegantReveal from "@/components/ui/ElegantReveal";
 import ShowProjectsButton from "@/components/ui/ShowProjectsButton";
 
 export default function WebsiteSection() {
   return (
-    <section className="py-20 px-6">
+    <section className="py-20 px-6 bg-background">
       <div className="max-w-7xl mx-auto">
         {/* Label */}
-        <Reveal>
+        <ElegantReveal>
           <div className="mb-4 flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-primary">
             <Globe className="h-4 w-4" />
             Web Technologies
           </div>
-        </Reveal>
+        </ElegantReveal>
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* LEFT CONTENT */}
           <div>
             {/* Title */}
-            <Reveal delay={100}>
+            <ElegantReveal delay={100} direction="up">
               <h2 className="text-4xl md:text-5xl font-bold leading-tight text-foreground mb-6">
                 Website <br /> Development
               </h2>
-            </Reveal>
+            </ElegantReveal>
 
             {/* Description */}
-            <Reveal delay={200}>
+            <ElegantReveal delay={200} direction="up">
               <p className="text-muted text-lg mb-8">
                 High-performance web applications. From corporate landing pages
                 to complex web apps, we deliver exceptional digital experiences.
               </p>
-            </Reveal>
+            </ElegantReveal>
 
             {/* Features */}
             <div className="space-y-4">
@@ -41,14 +41,14 @@ export default function WebsiteSection() {
                 "SEO & Performance Optimization",
                 "CMS Integration & Headless Architecture",
               ].map((item, index) => (
-                <Reveal key={item} delay={300 + index * 100}>
+                <ElegantReveal key={item} delay={300 + index * 100} direction="up">
                   <div className="flex items-center gap-3">
                     <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" />
                     <span className="text-foreground font-semibold">
                       {item}
                     </span>
                   </div>
-                </Reveal>
+                </ElegantReveal>
               ))}
             </div>
 
@@ -56,7 +56,7 @@ export default function WebsiteSection() {
           </div>
 
           {/* RIGHT IMAGE */}
-          <Reveal>
+          <ElegantReveal>
             <div className="relative flex justify-center md:justify-end">
               <div className="w-[420px] flex flex-col gap-0">
                 <div className="relative h-[320px] w-full overflow-hidden rounded-3xl border border-border shadow-xl group">
@@ -83,7 +83,7 @@ export default function WebsiteSection() {
                 <ShowProjectsButton href="/contents/projects" category="Website Development" />
               </div>
             </div>
-          </Reveal>
+          </ElegantReveal>
         </div>
       </div>
     </section>

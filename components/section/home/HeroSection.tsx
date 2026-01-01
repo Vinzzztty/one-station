@@ -1,106 +1,138 @@
-import Button from "@/components/ui/Button";
-import Reveal from "@/components/ui/Reveal";
-import Image from "next/image";
+import ElegantReveal from "@/components/ui/ElegantReveal";
+import { ArrowRight, Zap } from "lucide-react";
+import { getAllProjects } from "@/services/projects.service";
+import FeaturedWorkCarousel from "./FeaturedWorkCarousel";
 
-export default function HeroSection() {
+import Link from "next/link";
+
+export default async function HeroSection() {
+
+  const projects = await getAllProjects();
+
+  // Fallback for development if no projects exist
+  const displayProjects = projects.length > 0 ? projects : [
+    {
+      id: "1",
+      title: "E-Commerce Platform Redesign",
+      category: "Website Development",
+      description: "A complete overhaul of a major retail platform focusing on UX and conversion optimization.",
+      imageUrls: ["https://images.unsplash.com/photo-1661956602116-aa6865609028?auto=format&fit=crop&q=80&w=800&h=600"],
+      urlProject: "#",
+    },
+    {
+      id: "2",
+      title: "Fintech Dashboard",
+      category: "Web Application",
+      description: "Real-time financial data visualization dashboard for investment banking clients.",
+      imageUrls: ["https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800&h=600"],
+      urlProject: "#",
+    },
+    {
+      id: "3",
+      title: "Healthcare Mobile App",
+      category: "Mobile Development",
+      description: "Patient management system with telemedicine capabilities and secure data handling.",
+      imageUrls: ["https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=800&h=600"],
+      urlProject: "#",
+    },
+    {
+      id: "4",
+      title: "AI Analytics Platform",
+      category: "Data Science",
+      description: "Predictive analytics dashboard powered by machine learning algorithms for retail insights.",
+      imageUrls: ["https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800&h=600"],
+      urlProject: "#",
+    },
+    {
+      id: "5",
+      title: "Logistics Tracking System",
+      category: "Web Application",
+      description: "Real-time fleet tracking and inventory management system for a global logistics company.",
+      imageUrls: ["https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=800&h=600"],
+      urlProject: "#",
+    }
+  ];
+
   return (
-    <section className="relative bg-gradient-to-b from-purple-50 via-white to-white py-32 overflow-hidden">
+    <section className="relative pt-20 pb-32 overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
       {/* Background Decorations */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl animate-pulse-glow -z-10" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl -z-10" />
+      {/* Background Decorations */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] pointer-events-none">
+        <div className="w-full h-full bg-purple-600/10 rounded-full blur-[120px] animate-pulse-slow" />
+      </div>
+      <div className="absolute bottom-0 right-0 w-96 h-96 pointer-events-none">
+        <div className="w-full h-full bg-blue-600/5 rounded-full blur-[100px] animate-float-slow" />
+      </div>
+      <div className="absolute top-1/4 left-0 w-64 h-64 pointer-events-none">
+        <div className="w-full h-full bg-cyan-600/5 rounded-full blur-[80px] animate-float" />
+      </div>
 
+      {/* Main Content - Centered */}
       <div className="relative mx-auto max-w-5xl px-6 text-center">
         {/* Badge */}
-        <Reveal>
-          <div className="mx-auto mb-8 inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 backdrop-blur-sm">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
-            </span>
-            <span className="text-sm font-semibold text-primary uppercase tracking-wide">
-              Leading the Future
+        <ElegantReveal delay={0} direction="down">
+          <div className="mx-auto mb-8 inline-flex items-center gap-2 rounded-full bg-purple-500/10 border border-purple-500/20 px-4 py-2 backdrop-blur-sm">
+            <Zap className="w-3 h-3 text-purple-400" />
+            <span className="text-sm font-semibold text-purple-400 uppercase tracking-wide">
+              Leading Digital Innovation
             </span>
           </div>
-        </Reveal>
+        </ElegantReveal>
 
         {/* Heading */}
-        <Reveal delay={100}>
-          <h1 className="text-5xl font-bold leading-tight text-foreground sm:text-6xl md:text-7xl">
-            Innovate faster with <br className="hidden sm:block" />
-            <span className="text-primary">One Station</span> expertise.
+        <ElegantReveal delay={200} direction="up">
+          <h1 className="text-5xl font-extrabold leading-tight text-foreground sm:text-6xl md:text-7xl">
+            Custom {" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">
+              ERP Systems
+            </span>{" "}
+            that Scale with Your Business.
           </h1>
-        </Reveal>
+        </ElegantReveal>
 
         {/* Description */}
-        <Reveal delay={200}>
+        <ElegantReveal delay={400} direction="up">
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted sm:text-xl">
-            We bridge the gap between complex enterprise needs and cutting-edge
-            technology solutions to drive sustainable growth.
+            We build enterprise resource planning software for companies.
+            From Operations to the Back Office, we create ERP systems that scale with your business.
           </p>
-        </Reveal>
+        </ElegantReveal>
 
         {/* CTA Buttons */}
-        <Reveal delay={300}>
+        <ElegantReveal delay={600} direction="up">
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button className="rounded-full px-8 py-6 text-lg shadow-lg shadow-primary/25">
-              <a href="/contact" className="relative z-10">Start Your Project</a>
-              <svg
-                className="ml-2 h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M17 8l4 4m0 0l-4 4m4-4H3"
-                />
-              </svg>
-            </Button>
-            <Button
-              variant="secondary"
-              className="rounded-full px-8 py-6 text-lg border-2"
+            <Link
+              href="/contact"
+              className="bg-purple-600 hover:bg-purple-500 text-white px-8 py-4 rounded-xl font-bold transition-all flex items-center justify-center gap-2 group shadow-lg shadow-purple-900/20 hover:shadow-purple-700/40 hover:-translate-y-1"
             >
-              <svg
-                className="mr-2 h-5 w-5 fill-current"
-                viewBox="0 0 24 24"
-              >
-                <path d="M8 5v14l11-7z" />
-              </svg>
-              Watch Demo
-            </Button>
+              Free ERP Consultation
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </Link>
+            <Link
+              href="/erp-solution"
+              className="bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 px-8 py-4 rounded-xl font-bold transition-all flex items-center justify-center gap-2 hover:-translate-y-1"
+            >
+              View ERP Case Studies
+            </Link>
           </div>
-        </Reveal>
+        </ElegantReveal>
+      </div>
 
-        {/* Social Proof */}
-        <Reveal delay={400}>
-          <div className="mt-12 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <div className="flex -space-x-3">
-              {[
-                "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=64&h=64",
-                "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=64&h=64",
-                "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=64&h=64",
-              ].map((url, i) => (
-                <div
-                  key={i}
-                  className="relative h-10 w-10 overflow-hidden rounded-full border-2 border-background ring-2 ring-background"
-                >
-                  <Image
-                    src={url}
-                    alt={`Innovator ${i + 1}`}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              ))}
-            </div>
-            <div className="text-sm font-medium text-foreground">
-              <span className="font-bold">500+ Innovators</span>
-              <span className="ml-1 text-muted">trust our solutions</span>
-            </div>
+      {/* Featured Work Carousel */}
+      <div className="mx-auto max-w-7xl px-6 mt-30">
+        <ElegantReveal delay={800} direction="up">
+          <div className="text-center mb-10">
+            <span className="text-purple-400 font-bold uppercase tracking-[0.2em] text-xs mb-2 block">
+              Our Portfolio
+            </span>
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground">
+              Projects & ERP Systems We've Built
+            </h2>
           </div>
-        </Reveal>
+        </ElegantReveal>
+        <ElegantReveal delay={900} direction="up">
+          <FeaturedWorkCarousel projects={displayProjects} />
+        </ElegantReveal>
       </div>
     </section>
   );

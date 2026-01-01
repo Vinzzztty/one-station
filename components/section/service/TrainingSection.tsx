@@ -1,6 +1,6 @@
 import { GraduationCap } from "lucide-react";
 import Image from "next/image";
-import Reveal from "@/components/ui/Reveal";
+import ElegantReveal from "@/components/ui/ElegantReveal";
 import ShowProjectsButton from "@/components/ui/ShowProjectsButton";
 
 export default function TrainingSection() {
@@ -24,7 +24,7 @@ export default function TrainingSection() {
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-2 gap-16 items-center">
           {/* LEFT VISUAL */}
-          <Reveal>
+          <ElegantReveal direction="right">
             <div className="relative flex justify-center">
               <div className="w-[420px] flex flex-col gap-0">
                 <div className="relative h-[320px] w-full overflow-hidden rounded-3xl border border-border shadow-xl group">
@@ -51,38 +51,38 @@ export default function TrainingSection() {
                 <ShowProjectsButton href="/contents/projects" category="Training" />
               </div>
             </div>
-          </Reveal>
+          </ElegantReveal>
 
           {/* RIGHT CONTENT */}
           <div>
             {/* Label */}
-            <Reveal>
+            <ElegantReveal direction="right">
               <div className="mb-4 flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-primary">
                 <GraduationCap className="h-4 w-4" />
                 Corporate Education
               </div>
-            </Reveal>
+            </ElegantReveal>
 
             {/* Title */}
-            <Reveal delay={100}>
+            <ElegantReveal delay={100} direction="up">
               <h2 className="text-4xl md:text-5xl font-bold text-foreground leading-tight mb-6">
                 Training
               </h2>
-            </Reveal>
+            </ElegantReveal>
 
             {/* Description */}
-            <Reveal delay={200}>
+            <ElegantReveal delay={200} direction="up">
               <p className="text-muted text-lg mb-10">
                 Technology moves fast, we help your internal teams keep up. Our
                 customized training programs are designed to upskill your
                 workforce in the latest tools and methodologies.
               </p>
-            </Reveal>
+            </ElegantReveal>
 
             {/* FEATURES */}
             <div className="space-y-6">
               {programs.map((item, index) => (
-                <Reveal key={item.title} delay={300 + index * 150}>
+                <ElegantReveal key={item.title} delay={300 + index * 150} direction="up">
                   <div className="flex items-start gap-4">
                     <div className="w-10 h-10 bg-background rounded-full flex items-center justify-center flex-shrink-0">
                       <span className="text-primary text-2xl font-bold">
@@ -96,7 +96,7 @@ export default function TrainingSection() {
                       <p className="text-sm text-muted">{item.description}</p>
                     </div>
                   </div>
-                </Reveal>
+                </ElegantReveal>
               ))}
             </div>
           </div>

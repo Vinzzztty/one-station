@@ -80,11 +80,10 @@ export function AdminSidebarNav() {
           <Link
             key={link.href}
             href={link.href}
-            className={`flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-colors ${
-              isActive
+            className={`flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-colors ${isActive
                 ? "bg-primary/10 text-primary"
-                : "text-muted hover:bg-gray-100 hover:text-foreground"
-            }`}
+                : "text-muted hover:bg-surface-hover hover:text-foreground"
+              }`}
           >
             {link.icon}
             {link.label}

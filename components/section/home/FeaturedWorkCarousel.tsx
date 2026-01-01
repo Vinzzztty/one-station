@@ -22,11 +22,12 @@ interface FeaturedWorkCarouselProps {
 }
 
 export default function FeaturedWorkCarousel({ projects }: FeaturedWorkCarouselProps) {
+  const [mounted, setMounted] = useState(false);
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { loop: true, align: "start", slidesToScroll: 1 },
-    [Autoplay({ delay: 5000, stopOnInteraction: false })]
+    [Autoplay({ delay: 2500, stopOnInteraction: false })]
   );
-  
+
   const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
   const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
 
@@ -40,32 +41,35 @@ export default function FeaturedWorkCarousel({ projects }: FeaturedWorkCarouselP
   }, [emblaApi]);
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
     if (!emblaApi) return;
     onSelect();
     emblaApi.on("select", onSelect);
     emblaApi.on("reInit", onSelect);
   }, [emblaApi, onSelect]);
 
+  // SSR placeholder to prevent hydration mismatch
+  if (!mounted) {
+    return (
+      <div className="relative">
+        <div className="overflow-hidden">
+          <div className="flex -ml-6 py-4">
+            {projects.slice(0, 3).map((project) => (
+              <div key={project.id} className="flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33.333%] min-w-0 pl-6">
+                <div className="bg-surface rounded-2xl overflow-hidden border border-border h-[350px]" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="relative">
-      {/* Navigation Buttons */}
-      <div className="absolute -top-20 right-0 hidden md:flex gap-3">
-        <button
-          onClick={scrollPrev}
-          className="h-10 w-10 rounded-full border border-border bg-background hover:bg-surface flex items-center justify-center transition-colors disabled:opacity-50"
-          aria-label="Previous slide"
-        >
-          <ArrowLeft className="h-5 w-5 text-foreground" />
-        </button>
-        <button
-          onClick={scrollNext}
-          className="h-10 w-10 rounded-full border border-border bg-background hover:bg-surface flex items-center justify-center transition-colors disabled:opacity-50"
-          aria-label="Next slide"
-        >
-          <ArrowRight className="h-5 w-5 text-foreground" />
-        </button>
-      </div>
-
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex -ml-6 py-4">
           {projects.map((project, index) => (
@@ -86,12 +90,12 @@ export default function FeaturedWorkCarousel({ projects }: FeaturedWorkCarouselP
                         No Image
                       </div>
                     )}
-                    
+
                     {/* Overlay */}
                     <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                      <Link 
+                      <Link
                         href={project.urlProject || "#"}
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black rounded-full font-medium transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300"
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-full font-medium transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300"
                       >
                         View Details
                       </Link>
@@ -116,7 +120,7 @@ export default function FeaturedWorkCarousel({ projects }: FeaturedWorkCarouselP
           ))}
         </div>
       </div>
-      
+
       {/* Mobile Navigation Buttons (visible only on small screens) */}
       <div className="flex justify-center gap-4 mt-8 md:hidden">
         <button

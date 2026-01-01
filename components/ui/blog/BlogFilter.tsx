@@ -40,10 +40,9 @@ export default function BlogFilter({ categories, blogs }: BlogFilterProps) {
             key={cat}
             onClick={() => setActiveCategory(cat)}
             className={`rounded-full px-4 py-2 text-sm font-medium transition
-              ${
-                activeCategory === cat
-                  ? "bg-primary text-white"
-                  : "border border-border text-muted hover:bg-primary hover:text-white"
+              ${activeCategory === cat
+                ? "bg-primary text-white"
+                : "bg-surface border border-border text-muted hover:bg-primary hover:text-white"
               }`}
           >
             {cat}

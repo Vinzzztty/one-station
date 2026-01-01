@@ -16,7 +16,7 @@ export default async function BlogPage() {
     <main className="px-6 py-20">
       {/* Header */}
       <section className="mx-auto mb-12 max-w-3xl text-center">
-        <h1 className="text-4xl font-bold text-foreground">Our Blog</h1>
+        <h1 className="text-4xl font-bold text-foreground">Our Articles</h1>
         <p className="mt-3 text-muted">
           Insights on AI, web development, and digital innovation.
         </p>

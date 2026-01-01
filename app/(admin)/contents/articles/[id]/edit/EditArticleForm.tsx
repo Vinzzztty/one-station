@@ -109,7 +109,7 @@ export default function EditArticleForm({ article, categories }: Props) {
             </div>
           </div>
 
-          <div className="bg-white p-6 rounded-xl border border-border shadow-sm">
+          <div className="bg-surface p-6 rounded-xl border border-border shadow-sm">
             <label className="block text-sm font-semibold text-foreground mb-2">
               Short Description
             </label>
@@ -124,7 +124,7 @@ export default function EditArticleForm({ article, categories }: Props) {
             ></textarea>
           </div>
 
-          <div className="rounded-xl border border-border shadow-sm overflow-hidden bg-white">
+          <div className="rounded-xl border border-border shadow-sm overflow-hidden bg-surface">
             <div className="p-4 border-b border-border bg-surface/30">
               <label className="block text-sm font-semibold text-foreground">
                 Content
@@ -142,7 +142,7 @@ export default function EditArticleForm({ article, categories }: Props) {
         {/* RIGHT: Sidebar */}
         <div className="space-y-6">
           {/* Category */}
-          <div className="bg-white p-5 rounded-xl border border-border shadow-sm">
+          <div className="bg-surface p-5 rounded-xl border border-border shadow-sm">
             <div className="flex justify-between items-center mb-3">
               <label className="block text-sm font-semibold text-foreground">
                 Category
@@ -178,7 +178,7 @@ export default function EditArticleForm({ article, categories }: Props) {
           </div>
 
           {/* Tags */}
-          <div className="bg-white p-5 rounded-xl border border-border shadow-sm">
+          <div className="bg-surface p-5 rounded-xl border border-border shadow-sm">
             <label className="block text-sm font-semibold text-foreground mb-1">
               Tags
             </label>
@@ -211,7 +211,7 @@ export default function EditArticleForm({ article, categories }: Props) {
           </div>
 
           {/* Image */}
-          <div className="bg-white p-5 rounded-xl border border-border shadow-sm">
+          <div className="bg-surface p-5 rounded-xl border border-border shadow-sm">
             <label className="block text-sm font-semibold text-foreground mb-3">
               Featured Image
             </label>

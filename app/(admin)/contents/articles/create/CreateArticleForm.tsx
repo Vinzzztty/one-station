@@ -153,7 +153,7 @@ export default function CreateArticleForm({
           </div>
 
           {/* Short Description */}
-          <div className="bg-white p-6 rounded-xl border border-border shadow-sm">
+          <div className="bg-surface p-6 rounded-xl border border-border shadow-sm">
             <label className="block text-sm font-semibold text-foreground mb-2">
               Short Description (Excerpt)
             </label>
@@ -176,7 +176,7 @@ export default function CreateArticleForm({
 
           {/* MARKDOWN EDITOR */}
           <div
-            className="rounded-xl border border-border shadow-sm overflow-hidden bg-white"
+            className="rounded-xl border border-border shadow-sm overflow-hidden bg-surface"
             data-color-mode="light"
           >
             <div className="p-4 border-b border-border bg-surface/30">
@@ -197,7 +197,7 @@ export default function CreateArticleForm({
         {/* === RIGHT COLUMN: Settings Sidebar === */}
         <div className="space-y-6">
           {/* Category */}
-          <div className="bg-white p-5 rounded-xl border border-border shadow-sm">
+          <div className="bg-surface p-5 rounded-xl border border-border shadow-sm">
             <div className="flex justify-between items-center mb-3">
               <label className="block text-sm font-semibold text-foreground">
                 Category
@@ -244,11 +244,11 @@ export default function CreateArticleForm({
           </div>
 
           {/* Tags */}
-          <div className="bg-white p-5 rounded-xl border border-border shadow-sm">
+          <div className="bg-surface p-5 rounded-xl border border-border shadow-sm">
             <label className="block text-sm font-semibold text-foreground mb-1">
               Tags (Max 5)
             </label>
-            <p className="text-xs text-muted mb-3">Press Enter to add.</p>  
+            <p className="text-xs text-muted mb-3">Press Enter to add.</p>
 
             <input
               type="text"
@@ -280,12 +280,12 @@ export default function CreateArticleForm({
           </div>
 
           {/* Featured Image Upload */}
-          <div className="bg-white p-5 rounded-xl border border-border shadow-sm">
+          <div className="bg-surface p-5 rounded-xl border border-border shadow-sm">
             <label className="block text-sm font-semibold text-foreground mb-3">
               Featured Image
             </label>
 
-                       {/* --- NEW: IMAGE GUIDELINES NOTE --- */}
+            {/* --- NEW: IMAGE GUIDELINES NOTE --- */}
             <div className="mb-4 bg-blue-50 border border-blue-100 rounded-lg p-3 text-xs text-blue-800 space-y-1">
               <p className="font-semibold flex items-center gap-1">
                 <svg

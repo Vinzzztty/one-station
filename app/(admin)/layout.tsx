@@ -37,7 +37,7 @@ export default async function AdminLayout({
         <div className="p-4 border-t border-border bg-surface">
           <div className="flex items-center gap-3 px-4 py-2 mb-4 text-muted text-sm">
             {/* Avatar Inisial Dinamis */}
-            <div className="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center font-bold text-slate-700">
+            <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center font-bold text-primary">
               {userInitial}
             </div>
 
@@ -50,7 +50,7 @@ export default async function AdminLayout({
                 {userName}
               </span>
               <span
-                className="text-xs text-gray-500 truncate"
+                className="text-xs text-muted truncate"
                 title={userEmail}
               >
                 {userEmail}
@@ -60,7 +60,7 @@ export default async function AdminLayout({
 
           {/* TOMBOL LOGOUT */}
           <form action={logout}>
-            <button className="w-full flex items-center gap-3 px-4 py-2 text-sm font-medium text-muted rounded-lg hover:bg-red-50 hover:text-red-600 transition-colors group">
+            <button className="w-full flex items-center gap-3 px-4 py-2 text-sm font-medium text-muted rounded-lg hover:bg-red-500/10 hover:text-red-400 transition-colors group">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="18"

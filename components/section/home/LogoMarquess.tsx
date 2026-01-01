@@ -22,10 +22,10 @@ export default function LogoMarquess() {
   const logos = getLogos();
   const duplicatedLogos = [...logos, ...logos];
   return (
-    <section className="py-20 overflow-hidden bg-white">
+    <section className="py-20 overflow-hidden bg-[#F2F4F7]">
       <div className="mx-auto max-w-7xl px-6 text-center">
         <Reveal>
-          <p className="mb-12 text-lg font-semibold text-muted-foreground text-gray-500">
+          <p className="mb-12 text-lg font-semibold text-slate-500 uppercase tracking-widest">
             TRUSTED BY INDUSTRY LEADERS
           </p>
         </Reveal>

@@ -27,7 +27,7 @@ export default function BlogCard({
 }: BlogCardProps) {
   return (
     <Link href={`/articles/${slug}`} className="group">
-      <article className="h-full overflow-hidden rounded-2xl border border-border bg-white transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+      <article className="h-full overflow-hidden rounded-2xl border border-border bg-surface transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
         {/* Image Container - 16:9 ratio */}
         <div className="relative aspect-video w-full overflow-hidden">
           <Image

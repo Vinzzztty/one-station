@@ -11,19 +11,16 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(`${process.env.URL_PUBLIC}`),
   title: {
-    default: "One Station - Solusi Inovasi Digital & Web Development",
+    default: "Custom ERP Development Indonesia | One Station",
     template: "%s | One Station",
   },
   description:
-    "One Station adalah platform edukasi dan jasa pengembangan teknologi yang fokus pada AI, Web Development, dan transformasi digital untuk bisnis Anda.",
+    "We build custom ERP systems for companies that have outgrown off-the-shelf solutions. Full-stack development, mobile integration, AI automation. Based in Surabaya, Indonesia.",
   alternates: {
     canonical: "/",
   },
   keywords: [
-    "Jasa Pembuatan Website",
-    "Web Development Indonesia",
-    "Digital Agency",
-    "One Station",
+    "custom ERP Indonesia, pengembangan ERP, ERP software development, sistem ERP custom, ERP Surabaya, bespoke ERP systems Indonesia",
   ],
   icons: {
     icon: "/logo.png",

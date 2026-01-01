@@ -71,7 +71,7 @@ export default async function ArticleDetailPage({ params }: PageProps) {
   return (
     <main className="min-h-screen bg-surface">
       {/* Hero Section */}
-      <section className="border-b border-border bg-white">
+      <section className="border-b border-border bg-surface">
         <div className="mx-auto max-w-5xl px-6 py-12 md:py-20">
           {/* Breadcrumb */}
           <nav className="mb-6 flex items-center gap-2 text-sm text-muted">
@@ -79,8 +79,8 @@ export default async function ArticleDetailPage({ params }: PageProps) {
               Home
             </Link>
             <span>/</span>
-            <Link href="/blog" className="hover:text-primary transition-colors">
-              Blog
+            <Link href="/articles" className="hover:text-primary transition-colors">
+              Articles
             </Link>
             <span>/</span>
             <span className="text-primary font-medium">{article.category}</span>
@@ -160,7 +160,7 @@ export default async function ArticleDetailPage({ params }: PageProps) {
         )}
 
         {/* Author Bio */}
-        <div className="mt-12 rounded-2xl border border-border bg-white p-8">
+        <div className="mt-12 rounded-2xl border border-border bg-surface p-8">
           <div className="flex items-start gap-6">
             {/* <Image
               src={article.author.avatar}
@@ -203,35 +203,6 @@ export default async function ArticleDetailPage({ params }: PageProps) {
         </div>
       </article>
 
-      {/* Newsletter Section */}
-      <section className="border-y border-border bg-gradient-to-br from-primary/5 to-primary/10">
-        <div className="mx-auto max-w-4xl px-6 py-16 text-center">
-          <div className="mb-6 inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-primary">
-            Newsletter
-          </div>
-          <h2 className="mb-4 text-3xl font-bold text-foreground md:text-4xl">
-            Get insights delivered to your inbox
-          </h2>
-          <p className="mb-8 text-muted">
-            Join 10,000+ readers receiving our weekly deep dives into technology
-            and strategy.
-          </p>
-          <form className="mx-auto flex max-w-md gap-3">
-            <input
-              type="email"
-              placeholder="Enter your work email"
-              className="flex-1 rounded-full border border-border bg-white px-6 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
-            />
-            <button
-              type="submit"
-              className="rounded-full bg-primary px-8 py-3 text-sm font-semibold text-white hover:bg-primary-dark transition-colors"
-            >
-              Subscribe Free
-            </button>
-          </form>
-        </div>
-      </section>
-
       {/* Related Articles */}
       {relatedArticles.length > 0 && (
         <section className="mx-auto max-w-7xl px-6 py-16">
@@ -264,7 +235,7 @@ export default async function ArticleDetailPage({ params }: PageProps) {
               <Link
                 key={blog.slug}
                 href={`/blog/${blog.slug}`}
-                className="group overflow-hidden rounded-2xl border border-border bg-white hover:shadow-xl hover:-translate-y-1 transition-all"
+                className="group overflow-hidden rounded-2xl border border-border bg-surface hover:shadow-xl hover:-translate-y-1 transition-all"
               >
                 <div className="relative aspect-video overflow-hidden">
                   <Image
