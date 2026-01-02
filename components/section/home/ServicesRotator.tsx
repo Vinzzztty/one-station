@@ -81,9 +81,9 @@ export default function ServicesRotator() {
             {/* Fullpage Scroll Container with Snap */}
             <div
                 ref={containerRef}
-                className="h-screen overflow-y-scroll snap-y snap-mandatory scrollbar-hide"
+                className="h-screen overflow-y-scroll snap-y snap-proximity scrollbar-hide"
                 style={{
-                    scrollSnapType: "y mandatory",
+                    scrollSnapType: "y proximity",
                     scrollBehavior: "smooth"
                 }}
             >
@@ -93,7 +93,7 @@ export default function ServicesRotator() {
                         <div
                             key={section.id}
                             ref={(el) => { sectionRefs.current[index] = el; }}
-                            className="h-screen snap-start snap-always overflow-y-auto md:overflow-hidden"
+                            className="h-screen snap-start overflow-y-auto md:overflow-hidden"
                             style={{ scrollSnapAlign: "start" }}
                         >
                             <SectionComponent />

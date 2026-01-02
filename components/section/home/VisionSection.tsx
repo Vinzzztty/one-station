@@ -59,18 +59,10 @@ export default function VisionSection() {
       <div className="max-w-7xl mx-auto px-6">
         {/* HEADER */}
         <div className="text-center md:text-left mb-12">
-          <Reveal>
-            <div className="flex items-center justify-center md:justify-start gap-3 mb-4">
-              <span className="h-px w-12 bg-purple-600"></span>
-              <span className="text-purple-600 font-bold uppercase tracking-[0.2em] text-[10px]">
-                Enterprise Solutions
-              </span>
-            </div>
-          </Reveal>
 
           <Reveal delay={100}>
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-5 tracking-tight leading-tight">
-              Get the best <span className="text-purple-600">ERP solutions</span> from your best partner
+              Get the  <span className="text-purple-600">best Ecosystem</span>
             </h2>
           </Reveal>
 

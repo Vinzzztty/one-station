@@ -1,31 +1,15 @@
 import Reveal from "@/components/ui/Reveal";
-import fs from "fs";
 import Image from "next/image";
-import path from "path";
+import { getAllClients } from "@/services/clients.service";
 
-const getLogos = () => {
-  const directoryPath = path.join(process.cwd(), "public", "logo-client");
-  try {
-    const fileNames = fs.readdirSync(directoryPath);
-    const images = fileNames.filter((file) =>
-      /\.(png|jpe?g|svg|webp)$/.test(file)
-    );
-
-    return images.map((name) => `/logo-client/${name}`);
-  } catch (error) {
-    console.error("Error reading logo directory:", error);
-    return [];
-  }
-};
-
-export default function LogoMarquess() {
-  const logos = getLogos();
+export default async function LogoMarquess() {
+  const clients = await getAllClients();
 
   return (
     <section className="py-16 md:py-24 bg-[#F2F4F7]">
       <div className="mx-auto max-w-7xl px-6">
         {/* Header */}
-        <div className="mb-10 max-w-xl">
+        <div className="mb-10">
           <Reveal>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
               Our Clients
@@ -44,14 +28,15 @@ export default function LogoMarquess() {
         {/* Logo Grid */}
         <Reveal delay={200}>
           <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-7 xl:grid-cols-8 gap-4">
-            {logos.map((src, index) => (
+            {clients.map((client) => (
               <div
-                key={`${src}-${index}`}
+                key={client.id}
                 className="relative h-16 md:h-20 flex items-center justify-center bg-white rounded-2xl p-4 border border-slate-100 hover:border-purple-200 hover:shadow-md transition-all duration-300"
+                title={client.name}
               >
                 <Image
-                  src={src}
-                  alt={`Client logo ${index + 1}`}
+                  src={client.logoUrl}
+                  alt={client.name}
                   fill
                   className="object-contain p-3"
                   sizes="(max-width: 768px) 25vw, (max-width: 1200px) 12vw, 10vw"
@@ -60,6 +45,12 @@ export default function LogoMarquess() {
             ))}
           </div>
         </Reveal>
+
+        {clients.length === 0 && (
+          <div className="text-center py-8 text-slate-400">
+            No clients to display yet.
+          </div>
+        )}
       </div>
     </section>
   );
