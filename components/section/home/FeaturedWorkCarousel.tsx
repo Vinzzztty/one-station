@@ -19,6 +19,7 @@ interface FeaturedWorkCarouselProps {
 
 export default function FeaturedWorkCarousel({ projects }: FeaturedWorkCarouselProps) {
   const [mounted, setMounted] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -53,7 +54,10 @@ export default function FeaturedWorkCarousel({ projects }: FeaturedWorkCarouselP
         style={{
           width: 'max-content',
           animation: 'scroll 120s linear infinite',
+          animationPlayState: isPaused ? 'paused' : 'running',
         }}
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
       >
         {duplicatedProjects.map((project, index) => (
           <div

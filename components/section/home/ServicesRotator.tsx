@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState, useRef } from "react";
 import BusinessSolutionSection from "@/components/section/service/BusinessSolustionSection";
 import ChatbotAISection from "@/components/section/service/ChatbotAISection";
 import DataScienceSection from "@/components/section/service/DataScienceSection";
@@ -16,51 +16,107 @@ const SECTIONS = [
     { id: "business", label: "Business Solutions", Component: BusinessSolutionSection },
 ];
 
-const AUTO_SWITCH_INTERVAL = 5000; // 30 seconds
-
 export default function ServicesRotator() {
     const [activeIndex, setActiveIndex] = useState(0);
-    const [isPaused, setIsPaused] = useState(false);
+    const containerRef = useRef<HTMLDivElement>(null);
+    const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
 
+    // Update active index based on scroll position
     useEffect(() => {
-        if (isPaused) return;
+        const container = containerRef.current;
+        if (!container) return;
 
-        const interval = setInterval(() => {
-            setActiveIndex((prev) => (prev + 1) % SECTIONS.length);
-        }, AUTO_SWITCH_INTERVAL);
+        const handleScroll = () => {
+            const scrollTop = container.scrollTop;
+            const sectionHeight = window.innerHeight;
+            const newIndex = Math.round(scrollTop / sectionHeight);
 
-        return () => clearInterval(interval);
-    }, [isPaused]);
+            if (newIndex >= 0 && newIndex < SECTIONS.length && newIndex !== activeIndex) {
+                setActiveIndex(newIndex);
+            }
+        };
 
-    const CurrentSection = SECTIONS[activeIndex].Component;
+        container.addEventListener("scroll", handleScroll);
+        return () => container.removeEventListener("scroll", handleScroll);
+    }, [activeIndex]);
+
+    const scrollToSection = (index: number) => {
+        const container = containerRef.current;
+        if (container) {
+            const sectionHeight = window.innerHeight;
+            container.scrollTo({
+                top: index * sectionHeight,
+                behavior: "smooth"
+            });
+        }
+    };
 
     return (
-        <div
-            className="relative group min-h-[600px]"
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
-        >
-            {/* Navigation Controls */}
-            <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 flex gap-4 items-center px-4 py-2 rounded-full backdrop-blur-sm bg-black/10 border border-white/5 shadow-2xl">
+        <div className="relative h-screen overflow-hidden bg-background">
+            {/* Side Navigation */}
+            <div className="fixed right-6 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col gap-3 items-end">
                 {SECTIONS.map((section, index) => (
                     <button
                         key={section.id}
-                        onClick={() => setActiveIndex(index)}
-                        onMouseEnter={() => setActiveIndex(index)}
-                        className={cn(
-                            "h-3 rounded-full transition-all duration-300 shadow-sm",
+                        onClick={() => scrollToSection(index)}
+                        className="group flex items-center gap-3"
+                        aria-label={`Go to ${section.label}`}
+                    >
+                        <span className={cn(
+                            "text-xs font-medium uppercase tracking-wider transition-all duration-300 opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0",
+                            activeIndex === index ? "text-primary" : "text-slate-400"
+                        )}>
+                            {section.label}
+                        </span>
+                        <span className={cn(
+                            "w-3 h-3 rounded-full transition-all duration-300 border-2",
                             activeIndex === index
-                                ? "w-10 bg-primary"
-                                : "w-3 bg-slate-300/50 hover:bg-primary/50 hover:scale-125"
-                        )}
-                        aria-label={`Switch to ${section.label}`}
-                    />
+                                ? "bg-primary border-primary scale-125"
+                                : "bg-transparent border-slate-400 hover:border-primary hover:scale-110"
+                        )} />
+                    </button>
                 ))}
             </div>
 
-            {/* Content Area with Fade Transition */}
-            <div key={activeIndex} className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-                <CurrentSection />
+            {/* Fullpage Scroll Container with Snap */}
+            <div
+                ref={containerRef}
+                className="h-screen overflow-y-scroll snap-y snap-mandatory scrollbar-hide"
+                style={{
+                    scrollSnapType: "y mandatory",
+                    scrollBehavior: "smooth"
+                }}
+            >
+                {SECTIONS.map((section, index) => {
+                    const SectionComponent = section.Component;
+                    return (
+                        <div
+                            key={section.id}
+                            ref={(el) => { sectionRefs.current[index] = el; }}
+                            className="h-screen snap-start snap-always overflow-y-auto md:overflow-hidden"
+                            style={{ scrollSnapAlign: "start" }}
+                        >
+                            <SectionComponent />
+                        </div>
+                    );
+                })}
+            </div>
+
+            {/* Mobile Bottom Navigation */}
+            <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex md:hidden gap-2 items-center px-4 py-2 rounded-full backdrop-blur-md bg-black/20 border border-white/10 shadow-2xl">
+                {SECTIONS.map((section, index) => (
+                    <button
+                        key={section.id}
+                        onClick={() => scrollToSection(index)}
+                        className={cn(
+                            "h-2.5 rounded-full transition-all duration-300",
+                            activeIndex === index
+                                ? "w-8 bg-primary"
+                                : "w-2.5 bg-white/50 hover:bg-primary/50"
+                        )}
+                        aria-label={`Go to ${section.label}`}
+                    />
+                ))}
             </div>
         </div>
     );

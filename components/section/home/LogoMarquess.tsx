@@ -20,34 +20,44 @@ const getLogos = () => {
 
 export default function LogoMarquess() {
   const logos = getLogos();
-  const duplicatedLogos = [...logos, ...logos];
-  return (
-    <section className="py-20 overflow-hidden bg-[#F2F4F7]">
-      <div className="mx-auto max-w-7xl px-6 text-center">
-        <Reveal>
-          <p className="mb-12 text-lg font-semibold text-slate-500 uppercase tracking-widest">
-            TRUSTED BY INDUSTRY LEADERS
-          </p>
-        </Reveal>
 
+  return (
+    <section className="py-16 md:py-24 bg-[#F2F4F7]">
+      <div className="mx-auto max-w-7xl px-6">
+        {/* Header */}
+        <div className="mb-10 max-w-xl">
+          <Reveal>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              Our Clients
+            </h2>
+          </Reveal>
+          <Reveal delay={100}>
+            <p className="text-slate-500 text-sm leading-relaxed">
+              With a wide-range of clients in any industry with different scales
+              and challenges, from multinational, state-owned enterprise, and
+              private businesses, One Station has fulfilled its commitment to grow with
+              its clients.
+            </p>
+          </Reveal>
+        </div>
+
+        {/* Logo Grid */}
         <Reveal delay={200}>
-          <div className="relative w-full overflow-hidden mask-gradient">
-            <div className="flex animate-infinite-scroll gap-12 items-center">
-              {duplicatedLogos.map((src, index) => (
-                <div
-                  key={`${src}-${index}`}
-                  className="relative h-12 w-32 flex-shrink-0 opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
-                >
-                  <Image
-                    src={src}
-                    alt={`Client logo ${index}`}
-                    fill
-                    className="object-contain"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  />
-                </div>
-              ))}
-            </div>
+          <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-7 xl:grid-cols-8 gap-4">
+            {logos.map((src, index) => (
+              <div
+                key={`${src}-${index}`}
+                className="relative h-16 md:h-20 flex items-center justify-center bg-white rounded-2xl p-4 border border-slate-100 hover:border-purple-200 hover:shadow-md transition-all duration-300"
+              >
+                <Image
+                  src={src}
+                  alt={`Client logo ${index + 1}`}
+                  fill
+                  className="object-contain p-3"
+                  sizes="(max-width: 768px) 25vw, (max-width: 1200px) 12vw, 10vw"
+                />
+              </div>
+            ))}
           </div>
         </Reveal>
       </div>

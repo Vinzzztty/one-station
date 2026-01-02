@@ -1,5 +1,6 @@
 import { CheckCircle } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
+import Link from "next/link";
 
 export default function ERPPricingSection() {
     return (
@@ -29,7 +30,7 @@ export default function ERPPricingSection() {
                                 <li className="flex items-center gap-3 font-medium"><CheckCircle className="w-5 h-5 text-purple-600 flex-shrink-0" /> 3 Months Tech Support</li>
                                 <li className="flex items-center gap-3 font-medium text-slate-300"><CheckCircle className="w-5 h-5 flex-shrink-0" /> Custom ML Training</li>
                             </ul>
-                            <button className="w-full py-4 border-2 border-slate-900 text-slate-900 rounded-2xl font-black hover:bg-slate-900 hover:text-white transition-all">Get a Quote</button>
+                            <Link href="/contact" className="w-full py-4 border-2 border-slate-900 text-slate-900 rounded-2xl font-black hover:bg-slate-900 hover:text-white transition-all block text-center">Get a Quote</Link>
                         </div>
                     </Reveal>
 
@@ -44,7 +45,7 @@ export default function ERPPricingSection() {
                                 <li className="flex items-center gap-3 font-medium"><CheckCircle className="w-5 h-5 text-white flex-shrink-0" /> Custom Model Training</li>
                                 <li className="flex items-center gap-3 font-medium"><CheckCircle className="w-5 h-5 text-white flex-shrink-0" /> 6 Months Optimization</li>
                             </ul>
-                            <button className="w-full py-4 bg-white text-purple-600 rounded-2xl font-black hover:bg-slate-50 transition-all shadow-xl">Get Assessment</button>
+                            <Link href="/contact" className="w-full py-4 bg-white text-purple-600 rounded-2xl font-black hover:bg-slate-50 transition-all shadow-xl block text-center">Get Assessment</Link>
                         </div>
                     </Reveal>
 
@@ -58,7 +59,7 @@ export default function ERPPricingSection() {
                                 <li className="flex items-center gap-3 font-medium"><CheckCircle className="w-5 h-5 text-purple-600 flex-shrink-0" /> 12 Months VIP Support</li>
                                 <li className="flex items-center gap-3 font-medium"><CheckCircle className="w-5 h-5 text-purple-600 flex-shrink-0" /> Multi-location Rollout</li>
                             </ul>
-                            <button className="w-full py-4 border-2 border-slate-200 text-slate-400 rounded-2xl font-black hover:border-slate-900 hover:text-slate-900 transition-all">Talk to Sales</button>
+                            <Link href="/contact" className="w-full py-4 border-2 border-slate-200 text-slate-400 rounded-2xl font-black hover:border-slate-900 hover:text-slate-900 transition-all block text-center">Talk to Sales</Link>
                         </div>
                     </Reveal>
                 </div>

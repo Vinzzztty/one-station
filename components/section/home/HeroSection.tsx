@@ -71,7 +71,7 @@ export default async function HeroSection() {
 
         {/* Heading */}
         <ElegantReveal delay={200} direction="up">
-          <h1 className="text-3xl font-extrabold leading-tight text-foreground sm:text-4xl md:text-5xl">
+          <h1 className="text-4xl font-extrabold leading-tight text-foreground sm:text-6xl md:text-7xl">
             Custom {" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">
               ERP Systems
@@ -83,7 +83,7 @@ export default async function HeroSection() {
         {/* Description */}
         <ElegantReveal delay={400} direction="up">
           <p className="mx-auto mt-2 sm:mt-4 max-w-2xl text-xs sm:text-sm leading-relaxed text-muted">
-            We build enterprise resource planning software for companies. From Operations to the Back Office, we create ERP systems that scale with your business.
+            We build enterprise resource planning software for companies. From Operations to the Back Office.
           </p>
         </ElegantReveal>
 

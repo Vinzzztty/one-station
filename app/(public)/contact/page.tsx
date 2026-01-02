@@ -24,10 +24,10 @@ export default function ContactPage() {
               solutions.
             </h1>
             <Link
-              href="mailto:contact@onestation.io"
+              href="mailto:onestationone@gmail.com"
               className="mt-8 inline-flex items-center gap-2 text-xl hover:text-gray-600 transition-colors"
             >
-              contact@onestation.io
+              onestationone@gmail.com
               <ArrowUpRight size={24} />
             </Link>
           </div>
