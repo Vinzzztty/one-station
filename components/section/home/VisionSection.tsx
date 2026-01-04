@@ -55,7 +55,7 @@ export default function VisionSection() {
   ];
 
   return (
-    <section className="py-14 md:py-20 bg-[#F2F4F7]">
+    <section className="py-14 md:py-20 bg-slate-50">
       <div className="max-w-7xl mx-auto px-6">
         {/* HEADER */}
         <div className="text-center md:text-left mb-12">

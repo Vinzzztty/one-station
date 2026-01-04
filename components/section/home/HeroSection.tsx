@@ -71,7 +71,7 @@ export default async function HeroSection() {
 
         {/* Heading */}
         <ElegantReveal delay={200} direction="up">
-          <h1 className="text-4xl font-extrabold leading-tight text-foreground sm:text-6xl md:text-7xl">
+          <h1 className="text-4xl font-extrabold leading-tight text-foreground sm:text-6xl md:text-7xl sm:mt-14">
             Custom {" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">
               ERP Systems
@@ -82,8 +82,11 @@ export default async function HeroSection() {
 
         {/* Description */}
         <ElegantReveal delay={400} direction="up">
-          <p className="mx-auto mt-2 sm:mt-4 max-w-2xl text-xs sm:text-sm leading-relaxed text-muted">
-            We build enterprise resource planning software for companies. From Operations to the Back Office.
+          <p className="mx-auto mt-2 sm:mt-4 max-w-2xl text-base sm:text-lg leading-relaxed text-muted">
+            We build enterprise resource planning software for companies.
+          </p>
+          <p className="mx-auto mt-2 sm:mt-4 max-w-2xl text-base sm:text-lg leading-relaxed text-muted">
+            From Operations to the Back Office.
           </p>
         </ElegantReveal>
 
@@ -109,16 +112,6 @@ export default async function HeroSection() {
 
       {/* Featured Work Carousel */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 mt-6 sm:mt-12">
-        <ElegantReveal delay={800} direction="up">
-          <div className="text-center mb-3 sm:mb-6">
-            <span className="text-purple-400 font-bold uppercase tracking-[0.2em] text-xs mb-1 block">
-              Our Portfolio
-            </span>
-            <h2 className="text-xl md:text-2xl font-bold text-foreground">
-              Projects & ERP Systems We've Built
-            </h2>
-          </div>
-        </ElegantReveal>
         <ElegantReveal delay={900} direction="up">
           <FeaturedWorkCarousel projects={displayProjects} />
         </ElegantReveal>
