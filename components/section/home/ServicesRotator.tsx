@@ -81,9 +81,9 @@ export default function ServicesRotator() {
             {/* Fullpage Scroll Container with Snap */}
             <div
                 ref={containerRef}
-                className="h-screen overflow-y-scroll snap-y snap-proximity scrollbar-hide"
+                className="h-screen overflow-y-scroll snap-y snap-mandatory scrollbar-hide"
                 style={{
-                    scrollSnapType: "y proximity",
+                    scrollSnapType: "y mandatory",
                     scrollBehavior: "smooth"
                 }}
             >
