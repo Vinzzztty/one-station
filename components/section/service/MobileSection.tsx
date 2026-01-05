@@ -22,6 +22,7 @@ export default function MobileSection() {
 
   return (
     <ServiceSectionLayout
+      id="mobile-development"
       label="Mobile Engineering"
       labelIcon={Smartphone}
       title={

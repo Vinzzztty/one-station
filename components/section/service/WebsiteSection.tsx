@@ -11,6 +11,7 @@ export default function WebsiteSection() {
 
   return (
     <ServiceSectionLayout
+      id="website-development"
       label="Web Technologies"
       labelIcon={Globe}
       title={

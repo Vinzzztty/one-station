@@ -22,6 +22,7 @@ export default function ChatbotAISection() {
 
     return (
         <ServiceSectionLayout
+            id="chatbot-ai"
             label="Conversational AI"
             labelIcon={Bot}
             title={

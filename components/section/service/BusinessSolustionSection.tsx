@@ -22,6 +22,7 @@ export default function BusinessSolutionSection() {
 
   return (
     <ServiceSectionLayout
+      id="business-solutions"
       label="Enterprise Solutions"
       labelIcon={Briefcase}
       title={

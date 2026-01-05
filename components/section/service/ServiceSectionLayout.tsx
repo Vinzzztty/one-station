@@ -14,6 +14,7 @@ interface Feature {
 }
 
 interface ServiceSectionLayoutProps {
+    id?: string;
     label: string;
     labelIcon: LucideIcon;
     title: React.ReactNode;
@@ -27,6 +28,7 @@ interface ServiceSectionLayoutProps {
 }
 
 export default function ServiceSectionLayout({
+    id,
     label,
     labelIcon: LabelIcon,
     title,
@@ -39,7 +41,7 @@ export default function ServiceSectionLayout({
     children,
 }: ServiceSectionLayoutProps) {
     return (
-        <section className="relative w-full h-screen px-4 md:px-5 pt-16 md:pt-48 pb-20 md:pb-0 bg-background overflow-y-auto md:overflow-hidden flex items-start justify-center">
+        <section id={id} className="relative w-full h-screen px-4 md:px-5 pt-16 md:pt-48 pb-20 md:pb-0 bg-background overflow-y-auto md:overflow-hidden flex items-start justify-center">
             {/* Background Decorations */}
             <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-[400px] md:w-[600px] h-[400px] md:h-[600px] pointer-events-none">
                 <div className="w-full h-full bg-purple-600/10 rounded-full blur-[100px] md:blur-[120px] animate-pulse-slow" />

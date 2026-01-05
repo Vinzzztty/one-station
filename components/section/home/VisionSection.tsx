@@ -9,6 +9,7 @@ export default function VisionSection() {
       module: "01",
       title: "Core ERP Development",
       description: "End-to-end orchestration for high-concurrency business operations.",
+      href: "/erp-solution",
       features: [
         "Inventory, HR, Production",
         "Real-time Analytics",
@@ -21,6 +22,7 @@ export default function VisionSection() {
       module: "02",
       title: "Mobile Integration",
       description: "Enterprise-grade native mobile applications for field teams.",
+      href: "/service#mobile-development",
       features: [
         "Native iOS & Android",
         "Offline-first Access",
@@ -33,6 +35,7 @@ export default function VisionSection() {
       module: "03",
       title: "AI & Automation",
       description: "Predictive foresight and automated intelligence for decisions.",
+      href: "/service#chatbot-ai",
       features: [
         "Demand Forecasting",
         "NLP Automation",
@@ -45,6 +48,7 @@ export default function VisionSection() {
       module: "04",
       title: "Ongoing Evolution",
       description: "Continuous scaling support as your systems grow.",
+      href: "/service#business-solutions",
       features: [
         "Feature Additions",
         "Performance Optimization",
@@ -112,7 +116,7 @@ export default function VisionSection() {
                 {/* CTA Button */}
                 <div className="mt-auto">
                   <Link
-                    href="/contact"
+                    href={solution.href}
                     className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider px-5 py-2.5 rounded-full border border-purple-100 bg-purple-50/50 text-purple-600 hover:bg-purple-600 hover:text-white hover:border-purple-600 transition-all duration-300"
                   >
                     View Module Specs

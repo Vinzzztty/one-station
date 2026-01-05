@@ -22,6 +22,7 @@ export default function DataScienceSection() {
 
   return (
     <ServiceSectionLayout
+      id="data-science"
       label="Analytics & AI"
       labelIcon={BarChart3}
       title={
