@@ -59,44 +59,7 @@ export default function ERPPortfolioClient({ projects }: ERPPortfolioClientProps
         emblaApi.on("reInit", onSelect);
     }, [emblaApi, onSelect]);
 
-    // Fallback static data if no projects from DB
-    const fallbackProjects: PortfolioProject[] = [
-        {
-            id: 1,
-            title: "Global Logistics Corp",
-            category: "Distribution & Logistics",
-            imageUrls: ["https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=800&h=600"],
-            description: "Automated invoice processing system.",
-            problem: "Accounting team spent 40+ hours weekly manually entering thousands of shipping invoices with a high error rate.",
-            solution: "Implemented OCR Document Processing integrated with their core ERP and automated validation rules.",
-            impact: "85% auto-processing rate, reducing manual workload by 32 hours per week. ROI achieved in 4 months.",
-            detailedExplanation: "Our solution utilized a custom Tesseract-based OCR engine wrapped in a Python microservice. We built a validation layer that cross-references extracted data with the ERP's master vendor list and existing Purchase Orders. If a match is found within a 98% confidence threshold, the invoice is auto-posted. Exceptions are flagged for a quick 1-click human review."
-        },
-        {
-            id: 2,
-            title: "Urban Retail Chain",
-            category: "FMCG Retail",
-            imageUrls: ["https://images.unsplash.com/photo-1556740738-b6a63e27c4df?auto=format&fit=crop&q=80&w=800&h=600"],
-            description: "WhatsApp inventory chatbot.",
-            problem: "Store managers had no mobile access to inventory, causing delays in answering customer stock queries.",
-            solution: "Developed a WhatsApp Chatbot allowing 200+ staff to query real-time stock and pricing via mobile.",
-            impact: "Response time dropped from 10 minutes to 5 seconds. Significant increase in on-the-spot customer conversions.",
-            detailedExplanation: "The chatbot uses the WhatsApp Business API connected to a Node.js middleware. We implemented a Natural Language Processing (NLP) layer that understands intents like 'Check Stock' or 'Price Query'. The bot securely queries the ERP SQL database and returns formatted responses with product images and warehouse locations instantly."
-        },
-        {
-            id: 3,
-            title: "NexGen Manufacturing",
-            category: "Industrial Parts",
-            imageUrls: ["https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800&h=600"],
-            description: "AI demand forecasting.",
-            problem: "Inaccurate manual forecasting led to either 20% overstock or frequent stockouts of critical components.",
-            solution: "Deployed Predictive Analytics models for demand forecasting and automated reorder alerts.",
-            impact: "Reduced overstock by 15% and eliminated critical stockouts. Freed up $120k in working capital.",
-            detailedExplanation: "We integrated a Prophet-based forecasting model that analyzes 24 months of historical sales and procurement data. The system automatically calculates 'Dynamic Reorder Points' for each SKU based on lead times and seasonal trends. Automated alerts are sent to the procurement team whenever inventory is predicted to hit critical levels within a 7-day window."
-        }
-    ];
-
-    const displayProjects = projects.length > 0 ? projects : fallbackProjects;
+    const displayProjects = projects;
 
     // Loading State / SSR placeholder
     if (!mounted) {
