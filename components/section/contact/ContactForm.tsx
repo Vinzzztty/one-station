@@ -45,12 +45,11 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="w-full rounded-3xl bg-white p-8 md:p-12 lg:p-16 text-gray-900 shadow-xl border border-gray-100">
-      <div className="mb-12">
-        <h2 className="text-3xl font-medium mb-2">Contact Us</h2>
-        <p className="text-gray-500">
-          Leave us some details and our team will get back to you as soon as
-          possible.
+    <div className="w-full rounded-2xl bg-white p-6 md:p-8 text-gray-900 shadow-lg border border-gray-100">
+      <div className="mb-8">
+        <h2 className="text-2xl font-medium mb-1">Contact Us</h2>
+        <p className="text-sm text-gray-500">
+          Leave us some details and our team will get back to you.
         </p>
       </div>
 
@@ -73,18 +72,18 @@ export default function ContactForm() {
           </button>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} className="space-y-8">
+        <form onSubmit={handleSubmit} className="space-y-5">
           {error && (
-             <div className="bg-red-50 border border-red-200 rounded-lg p-4 flex items-center gap-3 text-red-700">
-                <AlertCircle className="w-5 h-5 flex-shrink-0" />
+             <div className="bg-red-50 border border-red-200 rounded-lg p-3 flex items-center gap-3 text-red-700 text-sm">
+                <AlertCircle className="w-4 h-4 flex-shrink-0" />
                 <p>{error}</p>
              </div>
           )}
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {/* Full Name */}
-            <div className="space-y-2">
-              <label htmlFor="fullName" className="block text-sm text-gray-500">
+            <div className="space-y-1">
+              <label htmlFor="fullName" className="block text-xs font-medium text-gray-600">
                 Full Name*
               </label>
               <input
@@ -92,14 +91,14 @@ export default function ContactForm() {
                 id="fullName"
                 name="fullName"
                 required
-                placeholder="Fill in full name"
-                className="w-full bg-transparent border-b border-gray-300 py-3 text-gray-900 focus:outline-none focus:border-emerald-500 transition-colors placeholder:text-gray-400"
+                placeholder="Full name"
+                className="w-full bg-gray-50/50 rounded-lg border border-gray-200 px-3 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all placeholder:text-gray-400"
               />
             </div>
 
             {/* Business Email */}
-            <div className="space-y-2">
-              <label htmlFor="email" className="block text-sm text-gray-500">
+            <div className="space-y-1">
+              <label htmlFor="email" className="block text-xs font-medium text-gray-600">
                 Business Email*
               </label>
               <input
@@ -107,28 +106,28 @@ export default function ContactForm() {
                 id="email"
                 name="email"
                 required
-                placeholder="Fill in business email"
-                className="w-full bg-transparent border-b border-gray-300 py-3 text-gray-900 focus:outline-none focus:border-emerald-500 transition-colors placeholder:text-gray-400"
+                placeholder="Business email"
+                className="w-full bg-gray-50/50 rounded-lg border border-gray-200 px-3 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all placeholder:text-gray-400"
               />
             </div>
 
             {/* Business Phone Number */}
-            <div className="space-y-2">
-              <label htmlFor="phone" className="block text-sm text-gray-500">
+            <div className="space-y-1">
+              <label htmlFor="phone" className="block text-xs font-medium text-gray-600">
                 Business Phone Number
               </label>
               <input
                 type="tel"
                 id="phone"
                 name="phone"
-                placeholder="Fill in business phone number"
-                className="w-full bg-transparent border-b border-gray-300 py-3 text-gray-900 focus:outline-none focus:border-emerald-500 transition-colors placeholder:text-gray-400"
+                placeholder="Phone number"
+                className="w-full bg-gray-50/50 rounded-lg border border-gray-200 px-3 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all placeholder:text-gray-400"
               />
             </div>
 
             {/* Service Interest */}
-            <div className="space-y-2">
-              <label htmlFor="service" className="block text-sm text-gray-500">
+            <div className="space-y-1">
+              <label htmlFor="service" className="block text-xs font-medium text-gray-600">
                 Your Service Interest*
               </label>
               <div className="relative">
@@ -136,36 +135,31 @@ export default function ContactForm() {
                   id="service"
                   name="service"
                   required
-                  className="w-full bg-transparent border-b border-gray-300 py-3 text-gray-900 focus:outline-none focus:border-emerald-500 transition-colors appearance-none cursor-pointer"
+                  className="w-full bg-gray-50/50 rounded-lg border border-gray-200 px-3 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all appearance-none cursor-pointer"
                   defaultValue=""
                 >
-                  <option value="" disabled className="bg-white text-gray-400">
+                  <option value="" disabled className="text-gray-400">
                     Select one
                   </option>
-                  <option value="web" className="bg-white">
-                    Web Development
-                  </option>
-                  <option value="mobile" className="bg-white">
-                    Mobile Development
-                  </option>
-                  <option value="ai" className="bg-white">
-                    AI Solutions
-                  </option>
-                  <option value="other" className="bg-white">
-                    Other
-                  </option>
+                  <option value="web">Web Development</option>
+                  <option value="mobile">Mobile Development</option>
+                  <option value="ai">AI Solutions</option>
+                  <option value="other">Other</option>
                 </select>
-                <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none text-gray-500">
+                <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
                   <svg
-                    width="12"
-                    height="8"
-                    viewBox="0 0 12 8"
+                    width="10"
+                    height="6"
+                    viewBox="0 0 10 6"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M1.41 0.589996L6 5.17L10.59 0.589996L12 2L6 8L0 2L1.41 0.589996Z"
-                      fill="currentColor"
+                      d="M1 1L5 5L9 1"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     />
                   </svg>
                 </div>
@@ -173,8 +167,8 @@ export default function ContactForm() {
             </div>
 
             {/* Business Type/Industry */}
-            <div className="space-y-2">
-              <label htmlFor="industry" className="block text-sm text-gray-500">
+            <div className="space-y-1">
+              <label htmlFor="industry" className="block text-xs font-medium text-gray-600">
                 Business Type/Industry*
               </label>
               <div className="relative">
@@ -182,39 +176,32 @@ export default function ContactForm() {
                   id="industry"
                   name="industry"
                   required
-                  className="w-full bg-transparent border-b border-gray-300 py-3 text-gray-900 focus:outline-none focus:border-emerald-500 transition-colors appearance-none cursor-pointer"
+                  className="w-full bg-gray-50/50 rounded-lg border border-gray-200 px-3 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all appearance-none cursor-pointer"
                   defaultValue=""
                 >
-                  <option value="" disabled className="bg-white text-gray-400">
+                  <option value="" disabled className="text-gray-400">
                     Select one
                   </option>
-                  <option value="tech" className="bg-white">
-                    Technology
-                  </option>
-                  <option value="finance" className="bg-white">
-                    Finance
-                  </option>
-                  <option value="health" className="bg-white">
-                    Healthcare
-                  </option>
-                  <option value="education" className="bg-white">
-                    Education
-                  </option>
-                  <option value="other" className="bg-white">
-                    Other
-                  </option>
+                  <option value="tech">Technology</option>
+                  <option value="finance">Finance</option>
+                  <option value="health">Healthcare</option>
+                  <option value="education">Education</option>
+                  <option value="other">Other</option>
                 </select>
-                <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none text-gray-500">
+                <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
                   <svg
-                    width="12"
-                    height="8"
-                    viewBox="0 0 12 8"
+                    width="10"
+                    height="6"
+                    viewBox="0 0 10 6"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M1.41 0.589996L6 5.17L10.59 0.589996L12 2L6 8L0 2L1.41 0.589996Z"
-                      fill="currentColor"
+                      d="M1 1L5 5L9 1"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     />
                   </svg>
                 </div>
@@ -222,24 +209,24 @@ export default function ContactForm() {
             </div>
 
             {/* Business Name */}
-            <div className="space-y-2">
-              <label htmlFor="businessName" className="block text-sm text-gray-500">
+            <div className="space-y-1">
+              <label htmlFor="businessName" className="block text-xs font-medium text-gray-600">
                 Business Name
               </label>
               <input
                 type="text"
                 id="businessName"
                 name="businessName"
-                placeholder="Fill in business name"
-                className="w-full bg-transparent border-b border-gray-300 py-3 text-gray-900 focus:outline-none focus:border-emerald-500 transition-colors placeholder:text-gray-400"
+                placeholder="Business name"
+                className="w-full bg-gray-50/50 rounded-lg border border-gray-200 px-3 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all placeholder:text-gray-400"
               />
             </div>
           </div>
 
           {/* Budget Selection */}
-          <div className="space-y-4 pt-4">
-            <label className="block text-sm text-gray-500">Budget Selection*</label>
-            <div className="flex flex-wrap gap-6">
+          <div className="space-y-3 pt-2">
+            <label className="block text-xs font-medium text-gray-600">Budget Selection*</label>
+            <div className="flex flex-wrap gap-4">
               {[
                 { label: "<50 mio", value: "<50 mio" },
                 { label: "50-100 mio", value: "50-100 mio" },
@@ -250,20 +237,20 @@ export default function ContactForm() {
                   key={option.value}
                   className="inline-flex items-center cursor-pointer group"
                 >
-                  <div className="relative flex items-center justify-center w-5 h-5 mr-3">
+                  <div className="relative flex items-center justify-center w-4 h-4 mr-2">
                     <input
                       type="radio"
                       name="budget"
                       value={option.value}
                       checked={budget === option.value}
                       onChange={(e) => setBudget(e.target.value)}
-                      className="peer appearance-none w-5 h-5 border border-gray-300 rounded-full checked:border-emerald-500 checked:bg-emerald-500 transition-all"
+                      className="peer appearance-none w-4 h-4 border border-gray-300 rounded-full checked:border-purple-600 checked:bg-purple-600 transition-all"
                     />
-                    <div className="absolute w-2 h-2 bg-white rounded-full opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none" />
+                    <div className="absolute w-1.5 h-1.5 bg-white rounded-full opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none" />
                   </div>
                   <span
-                    className={`text-sm ${
-                      budget === option.value ? "text-gray-900" : "text-gray-500"
+                    className={`text-xs ${
+                      budget === option.value ? "text-gray-900 font-medium" : "text-gray-500"
                     } group-hover:text-gray-900 transition-colors`}
                   >
                     {option.label}
@@ -274,22 +261,17 @@ export default function ContactForm() {
           </div>
 
           {/* Messages */}
-          <div className="space-y-2 pt-4">
-            <label htmlFor="message" className="block text-sm text-gray-500">
+          <div className="space-y-1 pt-2">
+            <label htmlFor="message" className="block text-xs font-medium text-gray-600">
               Messages*
             </label>
             <textarea
               id="message"
               name="message"
               required
-              placeholder="Input message here"
-              rows={1}
-              className="w-full bg-transparent border-b border-gray-300 py-3 text-gray-900 focus:outline-none focus:border-emerald-500 transition-colors placeholder:text-gray-400 resize-none min-h-[40px]"
-              onInput={(e) => {
-                const target = e.target as HTMLTextAreaElement;
-                target.style.height = "auto";
-                target.style.height = target.scrollHeight + "px";
-              }}
+              placeholder="Tell us about your project..."
+              rows={3}
+              className="w-full bg-gray-50/50 rounded-lg border border-gray-200 px-3 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all placeholder:text-gray-400 resize-none"
             />
           </div>
 

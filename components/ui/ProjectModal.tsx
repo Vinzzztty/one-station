@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
-import { X, ChevronLeft, ArrowRight } from "lucide-react";
+import { X, ArrowLeft, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { getProjectsByCategoryAction } from "@/app/actions/getProjects";
 import Button from "./Button";
@@ -172,15 +172,40 @@ export default function ProjectModal({ isOpen, onClose, category }: ProjectModal
           </div>
 
           {/* Carousel Section */}
-          <div className="w-full px-4 md:px-8 py-8">
-            <div className="relative group/carousel">
-              {/* Left Navigation Arrow (Visual only for now as horizontal scroll is native) */}
-              <button className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -ml-2 lg:-ml-6 z-10 w-12 h-12 items-center justify-center rounded-full bg-white shadow-lg border border-gray-100 text-primary hover:scale-105 transition-transform duration-200">
-                <ChevronLeft className="h-8 w-8" />
-              </button>
+          <div className="w-full px-4 md:px-8 py-8 relative group/carousel">
+             {/* Left Navigation Arrow */}
+             <button 
+                onClick={() => {
+                  const container = document.getElementById("project-carousel-container");
+                  if (container) {
+                    container.scrollBy({ left: -340, behavior: "smooth" });
+                  }
+                }}
+                className="hidden md:flex absolute left-0 top-[160px] -translate-y-1/2 z-10 w-12 h-12 items-center justify-center rounded-full bg-white shadow-lg border border-gray-100 text-primary hover:scale-105 transition-transform duration-200 disabled:opacity-50"
+                aria-label="Previous projects"
+             >
+               <ArrowLeft className="h-8 w-8" />
+             </button>
+
+             {/* Right Navigation Arrow */}
+             <button 
+                onClick={() => {
+                  const container = document.getElementById("project-carousel-container");
+                  if (container) {
+                    container.scrollBy({ left: 340, behavior: "smooth" });
+                  }
+                }}
+                className="hidden md:flex absolute right-0 top-[160px] -translate-y-1/2 z-10 w-12 h-12 items-center justify-center rounded-full bg-white shadow-lg border border-gray-100 text-primary hover:scale-105 transition-transform duration-200 disabled:opacity-50"
+                aria-label="Next projects"
+             >
+               <ArrowRight className="h-8 w-8" />
+             </button>
 
               {/* Scroll Container */}
-              <div className="flex gap-6 overflow-x-auto pb-6 px-4 snap-x snap-mandatory [-ms-scrollbar-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+              <div 
+                id="project-carousel-container"
+                className="flex gap-6 overflow-x-auto pb-6 px-4 snap-x snap-mandatory [-ms-scrollbar-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden scroll-smooth"
+              >
                 {isLoading ? (
                    // Loading Skeletons
                    Array.from({ length: 3 }).map((_, i) => (
@@ -203,7 +228,6 @@ export default function ProjectModal({ isOpen, onClose, category }: ProjectModal
                   </div>
                 )}
               </div>
-            </div>
           </div>
 
           {/* Footer CTA */}

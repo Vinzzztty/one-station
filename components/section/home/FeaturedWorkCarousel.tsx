@@ -62,11 +62,11 @@ export default function FeaturedWorkCarousel({ projects }: FeaturedWorkCarouselP
         {duplicatedProjects.map((project, index) => (
           <div
             key={`${project.id}-${index}`}
-            className="flex-shrink-0 w-[85vw] md:w-[45vw] lg:w-[380px]"
+            className="flex-shrink-0 w-[85vw] sm:w-[60vw] md:w-[45vw] lg:w-[480px]"
           >
-            <div className="group relative bg-surface rounded-2xl overflow-hidden border border-border hover:shadow-xl transition-all duration-300 h-full flex flex-col">
+            <div className="group relative bg-surface rounded-2xl overflow-hidden border border-border hover:shadow-xl transition-all duration-300 h-full">
               {/* Image Container */}
-              <div className="relative aspect-[4/3] overflow-hidden bg-muted">
+              <div className="relative aspect-video overflow-hidden bg-muted">
                 {project.imageUrls && project.imageUrls.length > 0 ? (
                   <Image
                     src={project.imageUrls[0]}
@@ -80,28 +80,27 @@ export default function FeaturedWorkCarousel({ projects }: FeaturedWorkCarouselP
                   </div>
                 )}
 
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <Link
-                    href={project.urlProject || "#"}
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-full font-medium transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300"
-                  >
-                    View Details
-                  </Link>
+                {/* Overlay - Content shows on hover */}
+                {/* On mobile (touch), we might want to consider showing improved visibility or just relying on tap */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4 md:p-6">
+                  <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                    <div className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-purple-400 mb-1 md:mb-2">
+                      {project.category}
+                    </div>
+                    <h3 className="text-lg md:text-xl font-bold text-white mb-1 md:mb-2 line-clamp-1">
+                      {project.title}
+                    </h3>
+                    <p className="text-xs md:text-sm text-gray-300 line-clamp-2 mb-3 md:mb-4">
+                      {project.description}
+                    </p>
+                    <Link
+                      href={project.urlProject || "#"}
+                      className="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 bg-purple-600 hover:bg-purple-500 text-white rounded-lg text-xs md:text-sm font-medium transition-colors"
+                    >
+                      View Details
+                    </Link>
+                  </div>
                 </div>
-              </div>
-
-              {/* Content */}
-              <div className="p-6 flex flex-col flex-grow">
-                <div className="text-sm text-primary font-medium mb-2">
-                  {project.category}
-                </div>
-                <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-muted line-clamp-3 mb-4 flex-grow">
-                  {project.description}
-                </p>
               </div>
             </div>
           </div>

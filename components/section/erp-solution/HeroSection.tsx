@@ -63,7 +63,7 @@ export default async function HeroSection() {
           </ElegantReveal>
 
           <ElegantReveal delay={100} direction="up">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 text-foreground">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-6 text-foreground">
               Smart Features to Make Your ERP{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">
                 Work Smarter
@@ -105,7 +105,7 @@ export default async function HeroSection() {
       </div>
 
       {/* Stats Section */}
-      <div className="max-w-7xl mx-auto px-6 mt-20 grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div className="max-w-7xl mx-auto px-4 mt-12 grid grid-cols-2 md:grid-cols-4 gap-6">
         {stats.map((stat, i) => (
           <ElegantReveal key={stat.label} delay={400 + i * 100} direction="up">
             <div className="text-center p-6 bg-slate-900/30 border border-purple-900/10 rounded-2xl hover:border-purple-500/20 transition-colors">

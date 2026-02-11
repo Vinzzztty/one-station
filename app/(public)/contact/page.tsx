@@ -15,11 +15,11 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen bg-surface px-6 py-20 text-foreground">
+    <main className="min-h-screen bg-surface px-4 py-10 text-foreground">
       <div className="mx-auto max-w-5xl">
         <Reveal>
-          <div className="mb-16">
-            <h1 className="text-4xl font-medium leading-tight sm:text-5xl md:text-6xl max-w-3xl">
+          <div className="mb-6">
+            <h1 className="text-2xl font-medium leading-tight sm:text-3xl md:text-4xl max-w-2xl">
               Let's unlock your business potential with our comprehensive
               solutions.
             </h1>
