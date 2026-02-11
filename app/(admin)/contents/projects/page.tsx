@@ -68,14 +68,18 @@ export default async function ProjectsPage() {
                 </td>
 
                 <td className="p-4 text-muted text-sm">
-                  <a
-                    href={item.urlProject}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:underline"
-                  >
-                    {item.urlProject}
-                  </a>
+                  {item.urlProject ? (
+                    <a
+                      href={item.urlProject}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:underline"
+                    >
+                      {item.urlProject}
+                    </a>
+                  ) : (
+                    <span className="text-muted/50">-</span>
+                  )}
                 </td>
 
                 <td className="p-4 text-right">

@@ -38,7 +38,7 @@ export default function CTASection() {
             </Link>
 
             <Link
-              href="/articles"
+              href="https://docs.google.com/document/d/18Sgb6f9v5fgUbDKlW5BHMPj2rRin7ltP4Cf7poGX-rc/edit?tab=t.8nxf5jpc8n95"
               className="bg-gray-800 hover:bg-gray-700 border border-gray-700 text-gray-200 px-8 py-4 rounded-xl font-bold transition-all flex items-center justify-center gap-2"
             >
               <FileText className="w-5 h-5" />

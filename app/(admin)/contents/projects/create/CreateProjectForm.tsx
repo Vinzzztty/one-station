@@ -4,7 +4,16 @@ import { useState } from "react";
 import Link from "next/link";
 import { createProjectAction } from "./actions";
 
-export default function CreateProjectForm() {
+type Category = {
+  id: string;
+  name: string;
+};
+
+export default function CreateProjectForm({
+  categories,
+}: {
+  categories: Category[];
+}) {
   const [isPending, setIsPending] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [imagePreviews, setImagePreviews] = useState<string[]>([]);
@@ -81,7 +90,7 @@ export default function CreateProjectForm() {
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-foreground mb-1.5">
-                  Title
+                  Title <span className="text-red-500">*</span>
                 </label>
                 <input
                   name="title"
@@ -99,7 +108,6 @@ export default function CreateProjectForm() {
                 <input
                   name="urlProject"
                   type="url"
-                  required
                   placeholder="https://example.com"
                   className="w-full px-4 py-2.5 rounded-lg border border-border bg-background focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none"
                 />
@@ -107,22 +115,23 @@ export default function CreateProjectForm() {
 
               <div>
                 <label className="block text-sm font-medium text-foreground mb-1.5">
-                  Category
+                  Category <span className="text-red-500">*</span>
                 </label>
                 <select
                   name="category"
                   className="w-full px-4 py-2.5 rounded-lg border border-border bg-background focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none"
                 >
-                  <option value="Data Science">Data Science</option>
-                  <option value="Mobile Development">Mobile Development</option>
-                  <option value="Website Development">Website Development</option>
-                  <option value="Training">Training</option>
+                  {categories.map((cat) => (
+                    <option key={cat.id} value={cat.name}>
+                      {cat.name}
+                    </option>
+                  ))}
                 </select>
               </div>
 
               <div>
                 <label className="block text-sm font-medium text-foreground mb-1.5">
-                  Description
+                  Description <span className="text-red-500">*</span>
                 </label>
                 <textarea
                   name="description"

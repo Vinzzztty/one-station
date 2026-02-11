@@ -14,8 +14,8 @@ import { z } from "zod";
 const projectSchema = z.object({
   title: z.string().min(3, "Title must be at least 3 characters"),
   description: z.string().min(10, "Description must be at least 10 characters"),
-  urlProject: z.string().url("Invalid URL"),
-  category: z.enum(["Data Science", "Mobile Development", "Website Development", "Training"]),
+  urlProject: z.string().url("Invalid URL").optional().or(z.literal("")),
+  category: z.string().min(1, "Category is required"),
 });
 
 export async function createProjectAction(formData: FormData) {
@@ -58,6 +58,7 @@ export async function createProjectAction(formData: FormData) {
 
   await createProject({
     ...validated.data,
+    urlProject: validated.data.urlProject || "",
     imageUrls,
   });
 
