@@ -40,7 +40,7 @@ export default function HeroSlideshow({ projects }: HeroSlideshowProps) {
     // Loading/SSR state
     if (!mounted || projects.length === 0) {
         return (
-            <div className="relative w-full aspect-square md:aspect-video lg:aspect-square bg-slate-900/50 border border-purple-900/20 rounded-[2rem] overflow-hidden flex items-center justify-center">
+            <div className="relative w-full aspect-video bg-slate-900/50 border border-purple-900/20 rounded-[2rem] overflow-hidden flex items-center justify-center">
                 <span className="text-muted text-sm">Loading projects...</span>
             </div>
         );
@@ -49,7 +49,7 @@ export default function HeroSlideshow({ projects }: HeroSlideshowProps) {
     const currentProject = projects[current];
 
     return (
-        <div className="relative w-full aspect-square md:aspect-video lg:aspect-square bg-slate-900/50 border border-purple-900/20 rounded-[2rem] overflow-hidden group">
+        <div className="relative w-full aspect-video bg-slate-900/50 border border-purple-900/20 rounded-[2rem] overflow-hidden group">
             {/* Full Image */}
             {currentProject.imageUrls?.[0] && (
                 <Image
