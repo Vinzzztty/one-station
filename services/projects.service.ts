@@ -29,6 +29,7 @@ export async function createProject(data: {
   title: string;
   description: string;
   urlProject: string;
+  category: string;
   imageUrls: string[];
 }) {
   return prisma.project.create({
@@ -42,6 +43,7 @@ export async function updateProject(
     title?: string;
     description?: string;
     urlProject?: string;
+    category?: string;
     imageUrls?: string[];
   }
 ) {

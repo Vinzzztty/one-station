@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import ElegantReveal from "@/components/ui/ElegantReveal";
 import { cn } from "@/lib/utils";
+import ProjectDetailsModal from "@/components/section/projects/ProjectDetailsModal";
 
 export interface Project {
     id: string | number;
@@ -30,6 +31,7 @@ const CATEGORIES = [
 
 export default function ProjectsGrid({ projects }: { projects: Project[] }) {
     const [activeCategory, setActiveCategory] = useState("All");
+    const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
     const filteredProjects = useMemo(() => {
         if (activeCategory === "All") return projects;
@@ -102,10 +104,13 @@ export default function ProjectsGrid({ projects }: { projects: Project[] }) {
                                         {project.problem || project.description}
                                     </p>
 
-                                    <div className="mt-auto pt-6 border-t border-slate-800 flex items-center justify-between text-sm font-bold text-slate-300 group-hover:text-purple-400 transition-colors">
+                                    <button 
+                                        onClick={() => setSelectedProject(project)}
+                                        className="mt-auto pt-6 border-t border-slate-800 flex items-center justify-between text-sm font-bold text-slate-300 group-hover:text-purple-400 transition-colors w-full cursor-pointer"
+                                    >
                                         <span>View Case Study</span>
                                         <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                                    </div>
+                                    </button>
                                 </div>
                             </div>
                         </ElegantReveal>
@@ -121,6 +126,13 @@ export default function ProjectsGrid({ projects }: { projects: Project[] }) {
                     </div>
                 )}
             </div>
+
+            {/* Project Details Modal */}
+            <ProjectDetailsModal 
+                project={selectedProject} 
+                isOpen={!!selectedProject} 
+                onClose={() => setSelectedProject(null)} 
+            />
         </section>
     );
 }
