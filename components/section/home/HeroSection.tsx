@@ -54,7 +54,7 @@ export default async function HeroSection() {
   ];
 
   return (
-    <section className="relative pt-2 pb-6 sm:pt-2 sm:pb-2 overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+    <section className="relative min-h-screen flex flex-col justify-center py-4 sm:py-6 overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
       {/* Background Decorations */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] pointer-events-none">
         <div className="w-full h-full bg-purple-600/10 rounded-full blur-[120px] animate-pulse-slow" />
@@ -67,11 +67,11 @@ export default async function HeroSection() {
       </div>
 
       {/* Main Content - Centered */}
-      <div className="relative mx-auto max-w-4xl px-10 text-center">
+      <div className="relative mx-auto max-w-4xl px-6 sm:px-10 text-center">
 
         {/* Heading */}
         <ElegantReveal delay={200} direction="up">
-          <h1 className="mt-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight text-foreground mb-4 sm:mb-6">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight text-foreground mb-2 sm:mb-3">
             Custom {" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">
               ERP Systems
@@ -82,11 +82,11 @@ export default async function HeroSection() {
 
         {/* Description */}
         <ElegantReveal delay={400} direction="up">
-          <div className="space-y-2 sm:space-y-4 mb-5 sm:mb-7">
-            <p className="mx-auto max-w-2xl text-base sm:text-lg md:text-xl leading-tight text-muted">
+          <div className="space-y-0.5 sm:space-y-1 mb-3 sm:mb-4">
+            <p className="mx-auto max-w-2xl text-xs sm:text-sm md:text-base leading-relaxed text-muted">
               We build enterprise resource planning software for companies.
             </p>
-            <p className="mx-auto max-w-2xl text-base sm:text-lg md:text-xl leading-tight text-muted">
+            <p className="mx-auto max-w-2xl text-xs sm:text-sm md:text-base leading-relaxed text-muted">
               From Operations to the Back Office.
             </p>
           </div>
@@ -94,17 +94,17 @@ export default async function HeroSection() {
 
         {/* CTA Buttons */}
         <ElegantReveal delay={600} direction="up">
-          <div className="flex flex-row items-center justify-center gap-3 sm:gap-4 w-full">
+          <div className="flex flex-row items-center justify-center gap-2 sm:gap-3 w-full mb-4 sm:mb-6">
             <Link
               href="/contact"
-              className="bg-purple-600 hover:bg-purple-500 text-white px-5 py-3 sm:px-8 sm:py-4 rounded-xl font-bold transition-all flex items-center justify-center gap-2 group shadow-lg shadow-purple-900/20 hover:shadow-purple-700/40 hover:-translate-y-1 text-xs sm:text-base whitespace-nowrap"
+              className="bg-purple-600 hover:bg-purple-500 text-white px-3 py-2 sm:px-5 sm:py-2.5 rounded-lg font-bold transition-all flex items-center justify-center gap-1.5 group shadow-lg shadow-purple-900/20 hover:shadow-purple-700/40 hover:-translate-y-1 text-[10px] sm:text-xs whitespace-nowrap"
             >
               Free ERP Consultation
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
               href="/erp-solution"
-              className="bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 px-5 py-3 sm:px-8 sm:py-4 rounded-xl font-bold transition-all flex items-center justify-center gap-2 hover:-translate-y-1 text-xs sm:text-base whitespace-nowrap"
+              className="bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 px-3 py-2 sm:px-5 sm:py-2.5 rounded-lg font-bold transition-all flex items-center justify-center gap-1.5 hover:-translate-y-1 text-[10px] sm:text-xs whitespace-nowrap"
             >
               View ERP Case Studies
             </Link>
@@ -113,7 +113,7 @@ export default async function HeroSection() {
       </div>
 
       {/* Featured Work Carousel */}
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 mt-4 sm:mt-12">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <ElegantReveal delay={900} direction="up">
           <FeaturedWorkCarousel projects={displayProjects} />
         </ElegantReveal>
