@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
-import { X, ArrowLeft, ArrowRight } from "lucide-react";
+import { X, ArrowLeft, ArrowRight, ChevronLeft } from "lucide-react";
 import Image from "next/image";
 import { getProjectsByCategoryAction } from "@/app/actions/getProjects";
 import Button from "./Button";
@@ -48,7 +48,7 @@ function ProjectCard({ project }: { project: Project }) {
 
   const prevImage = () => {
     if (!project.imageUrls) return;
-    setDetailsImageIndex((prev) => 
+    setDetailsImageIndex((prev) =>
       prev === 0 ? project.imageUrls.length - 1 : prev - 1
     );
   };
@@ -62,9 +62,8 @@ function ProjectCard({ project }: { project: Project }) {
               {project.imageUrls.map((url, index) => (
                 <div
                   key={url}
-                  className={`absolute inset-0 transition-opacity duration-1000 ${
-                    index === currentImageIndex ? "opacity-100" : "opacity-0"
-                  }`}
+                  className={`absolute inset-0 transition-opacity duration-1000 ${index === currentImageIndex ? "opacity-100" : "opacity-0"
+                    }`}
                 >
                   <Image
                     src={url}
@@ -79,11 +78,10 @@ function ProjectCard({ project }: { project: Project }) {
                   {project.imageUrls.map((_, idx) => (
                     <div
                       key={idx}
-                      className={`h-1.5 rounded-full transition-all duration-300 ${
-                        idx === currentImageIndex
+                      className={`h-1.5 rounded-full transition-all duration-300 ${idx === currentImageIndex
                           ? "w-6 bg-white"
                           : "w-1.5 bg-white/60"
-                      }`}
+                        }`}
                     />
                   ))}
                 </div>
@@ -129,39 +127,38 @@ function ProjectCard({ project }: { project: Project }) {
                   {project.imageUrls && project.imageUrls.length > 0 ? (
                     <>
                       <Image
-                        src={project.imageUrls[detailsImageIndex]} 
+                        src={project.imageUrls[detailsImageIndex]}
                         alt={project.title}
                         fill
-                        className="object-contain bg-gray-900" 
+                        className="object-contain bg-gray-900"
                       />
-                      
+
                       {/* Navigation Arrows */}
                       {project.imageUrls.length > 1 && (
                         <>
-                          <button 
+                          <button
                             onClick={(e) => { e.stopPropagation(); prevImage(); }}
                             className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/30 hover:bg-black/50 text-white flex items-center justify-center backdrop-blur-sm opacity-0 group-hover/details:opacity-100 transition-opacity"
                           >
                             <ChevronLeft className="w-6 h-6" />
                           </button>
-                          <button 
+                          <button
                             onClick={(e) => { e.stopPropagation(); nextImage(); }}
                             className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/30 hover:bg-black/50 text-white flex items-center justify-center backdrop-blur-sm opacity-0 group-hover/details:opacity-100 transition-opacity"
                           >
                             <ChevronLeft className="w-6 h-6 rotate-180" />
                           </button>
-                          
+
                           {/* Dots */}
                           <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
                             {project.imageUrls.map((_, idx) => (
                               <button
                                 key={idx}
                                 onClick={() => setDetailsImageIndex(idx)}
-                                className={`h-1.5 rounded-full transition-all duration-300 ${
-                                  idx === detailsImageIndex
+                                className={`h-1.5 rounded-full transition-all duration-300 ${idx === detailsImageIndex
                                     ? "w-6 bg-white"
                                     : "w-1.5 bg-white/60 hover:bg-white/80"
-                                }`}
+                                  }`}
                               />
                             ))}
                           </div>
@@ -186,7 +183,7 @@ function ProjectCard({ project }: { project: Project }) {
                         {project.category}
                       </span>
                     </div>
-                    
+
                     <p className="text-gray-600 leading-relaxed text-sm md:text-base">
                       {project.description}
                     </p>
@@ -291,61 +288,61 @@ export default function ProjectModal({ isOpen, onClose, category }: ProjectModal
 
           {/* Carousel Section */}
           <div className="w-full px-4 md:px-8 py-8 relative group/carousel">
-             {/* Left Navigation Arrow */}
-             <button 
-                onClick={() => {
-                  const container = document.getElementById("project-carousel-container");
-                  if (container) {
-                    container.scrollBy({ left: -340, behavior: "smooth" });
-                  }
-                }}
-                className="hidden md:flex absolute left-0 top-[160px] -translate-y-1/2 z-10 w-12 h-12 items-center justify-center rounded-full bg-white shadow-lg border border-gray-100 text-primary hover:scale-105 transition-transform duration-200 disabled:opacity-50"
-                aria-label="Previous projects"
-             >
-               <ArrowLeft className="h-8 w-8" />
-             </button>
+            {/* Left Navigation Arrow */}
+            <button
+              onClick={() => {
+                const container = document.getElementById("project-carousel-container");
+                if (container) {
+                  container.scrollBy({ left: -340, behavior: "smooth" });
+                }
+              }}
+              className="hidden md:flex absolute left-0 top-[160px] -translate-y-1/2 z-10 w-12 h-12 items-center justify-center rounded-full bg-white shadow-lg border border-gray-100 text-primary hover:scale-105 transition-transform duration-200 disabled:opacity-50"
+              aria-label="Previous projects"
+            >
+              <ArrowLeft className="h-8 w-8" />
+            </button>
 
-             {/* Right Navigation Arrow */}
-             <button 
-                onClick={() => {
-                  const container = document.getElementById("project-carousel-container");
-                  if (container) {
-                    container.scrollBy({ left: 340, behavior: "smooth" });
-                  }
-                }}
-                className="hidden md:flex absolute right-0 top-[160px] -translate-y-1/2 z-10 w-12 h-12 items-center justify-center rounded-full bg-white shadow-lg border border-gray-100 text-primary hover:scale-105 transition-transform duration-200 disabled:opacity-50"
-                aria-label="Next projects"
-             >
-               <ArrowRight className="h-8 w-8" />
-             </button>
+            {/* Right Navigation Arrow */}
+            <button
+              onClick={() => {
+                const container = document.getElementById("project-carousel-container");
+                if (container) {
+                  container.scrollBy({ left: 340, behavior: "smooth" });
+                }
+              }}
+              className="hidden md:flex absolute right-0 top-[160px] -translate-y-1/2 z-10 w-12 h-12 items-center justify-center rounded-full bg-white shadow-lg border border-gray-100 text-primary hover:scale-105 transition-transform duration-200 disabled:opacity-50"
+              aria-label="Next projects"
+            >
+              <ArrowRight className="h-8 w-8" />
+            </button>
 
-              {/* Scroll Container */}
-              <div 
-                id="project-carousel-container"
-                className="flex gap-6 overflow-x-auto pb-6 px-4 snap-x snap-mandatory [-ms-scrollbar-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden scroll-smooth"
-              >
-                {isLoading ? (
-                   // Loading Skeletons
-                   Array.from({ length: 3 }).map((_, i) => (
-                    <div key={i} className="snap-center shrink-0 w-[300px] md:w-[340px] flex flex-col bg-gray-50 rounded-xl overflow-hidden shadow-sm h-[400px] animate-pulse">
-                      <div className="w-full aspect-[4/3] bg-gray-200" />
-                      <div className="p-6 space-y-4">
-                        <div className="h-6 bg-gray-200 rounded w-3/4" />
-                        <div className="h-4 bg-gray-200 rounded w-full" />
-                        <div className="h-4 bg-gray-200 rounded w-2/3" />
-                      </div>
+            {/* Scroll Container */}
+            <div
+              id="project-carousel-container"
+              className="flex gap-6 overflow-x-auto pb-6 px-4 snap-x snap-mandatory [-ms-scrollbar-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden scroll-smooth"
+            >
+              {isLoading ? (
+                // Loading Skeletons
+                Array.from({ length: 3 }).map((_, i) => (
+                  <div key={i} className="snap-center shrink-0 w-[300px] md:w-[340px] flex flex-col bg-gray-50 rounded-xl overflow-hidden shadow-sm h-[400px] animate-pulse">
+                    <div className="w-full aspect-[4/3] bg-gray-200" />
+                    <div className="p-6 space-y-4">
+                      <div className="h-6 bg-gray-200 rounded w-3/4" />
+                      <div className="h-4 bg-gray-200 rounded w-full" />
+                      <div className="h-4 bg-gray-200 rounded w-2/3" />
                     </div>
-                  ))
-                ) : projects.length > 0 ? (
-                  projects.map((project) => (
-                    <ProjectCard key={project.id} project={project} />
-                  ))
-                ) : (
-                  <div className="w-full py-12 text-center text-muted">
-                    No projects found for this category.
                   </div>
-                )}
-              </div>
+                ))
+              ) : projects.length > 0 ? (
+                projects.map((project) => (
+                  <ProjectCard key={project.id} project={project} />
+                ))
+              ) : (
+                <div className="w-full py-12 text-center text-muted">
+                  No projects found for this category.
+                </div>
+              )}
+            </div>
           </div>
 
           {/* Footer CTA */}
