@@ -36,9 +36,9 @@ export default function FeaturedWorkCarousel({ projects }: FeaturedWorkCarouselP
           {projects.slice(0, 3).map((project) => (
             <div
               key={project.id}
-              className="flex-shrink-0 w-[85vw] md:w-[45vw] lg:w-[380px]"
+              className="flex-shrink-0 w-[85vw] md:w-[45vw] lg:w-[320px]"
             >
-              <div className="bg-surface rounded-2xl overflow-hidden border border-border h-[400px]" />
+              <div className="bg-surface rounded-2xl overflow-hidden border border-border h-[280px]" />
             </div>
           ))}
         </div>
@@ -50,7 +50,7 @@ export default function FeaturedWorkCarousel({ projects }: FeaturedWorkCarouselP
     <div className="relative overflow-hidden">
       {/* Smooth infinite scrolling container */}
       <div
-        className="flex gap-6 py-4"
+        className="flex gap-4 py-2"
         style={{
           width: 'max-content',
           animation: 'scroll 120s linear infinite',
@@ -62,11 +62,11 @@ export default function FeaturedWorkCarousel({ projects }: FeaturedWorkCarouselP
         {duplicatedProjects.map((project, index) => (
           <div
             key={`${project.id}-${index}`}
-            className="flex-shrink-0 w-[85vw] sm:w-[60vw] md:w-[45vw] lg:w-[480px]"
+            className="flex-shrink-0 w-[75vw] sm:w-[55vw] md:w-[40vw] lg:w-[350px]"
           >
-            <div className="group relative bg-surface rounded-2xl overflow-hidden border border-border hover:shadow-xl transition-all duration-300 h-full">
+            <div className="group relative bg-surface rounded-xl overflow-hidden border border-border hover:shadow-xl transition-all duration-300 h-full">
               {/* Image Container */}
-              <div className="relative aspect-video overflow-hidden bg-muted">
+              <div className="relative aspect-[16/11] overflow-hidden bg-muted">
                 {project.imageUrls && project.imageUrls.length > 0 ? (
                   <Image
                     src={project.imageUrls[0]}
@@ -82,7 +82,7 @@ export default function FeaturedWorkCarousel({ projects }: FeaturedWorkCarouselP
 
                 {/* Overlay - Content shows on hover */}
                 {/* On mobile (touch), we might want to consider showing improved visibility or just relying on tap */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4 md:p-6">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-3 md:p-4">
                   <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                     <div className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-purple-400 mb-1 md:mb-2">
                       {project.category}
@@ -90,12 +90,12 @@ export default function FeaturedWorkCarousel({ projects }: FeaturedWorkCarouselP
                     <h3 className="text-lg md:text-xl font-bold text-white mb-1 md:mb-2 line-clamp-1">
                       {project.title}
                     </h3>
-                    <p className="text-xs md:text-sm text-gray-300 line-clamp-2 mb-3 md:mb-4">
+                    <p className="text-[10px] md:text-xs text-gray-300 line-clamp-2 mb-2 md:mb-3">
                       {project.description}
                     </p>
                     <Link
                       href={project.urlProject || "#"}
-                      className="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 bg-purple-600 hover:bg-purple-500 text-white rounded-lg text-xs md:text-sm font-medium transition-colors"
+                      className="inline-flex items-center gap-1.5 px-2.5 py-1.5 md:px-3 md:py-1.5 bg-purple-600 hover:bg-purple-500 text-white rounded-lg text-[10px] md:text-xs font-medium transition-colors"
                     >
                       View Details
                     </Link>
