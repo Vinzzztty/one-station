@@ -5,11 +5,17 @@ import Link from "next/link";
 import { updateProjectAction } from "../../create/actions";
 import { Project } from "@/app/generated/prisma/client";
 
+type Category = {
+  id: string;
+  name: string;
+};
+
 interface EditProjectFormProps {
   project: Project;
+  categories: Category[];
 }
 
-export default function EditProjectForm({ project }: EditProjectFormProps) {
+export default function EditProjectForm({ project, categories }: EditProjectFormProps) {
   const [isPending, setIsPending] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   
@@ -120,7 +126,6 @@ export default function EditProjectForm({ project }: EditProjectFormProps) {
                 <input
                   name="urlProject"
                   type="url"
-                  required
                   defaultValue={project.urlProject}
                   placeholder="https://example.com"
                   className="w-full px-4 py-2.5 rounded-lg border border-border bg-background focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none"
@@ -133,13 +138,15 @@ export default function EditProjectForm({ project }: EditProjectFormProps) {
                 </label>
                 <select
                   name="category"
-                  defaultValue={project.category || "Website Development"}
+                  defaultValue={project.category || ""}
                   className="w-full px-4 py-2.5 rounded-lg border border-border bg-background focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none"
                 >
-                  <option value="Data Science">Data Science</option>
-                  <option value="Mobile Development">Mobile Development</option>
-                  <option value="Website Development">Website Development</option>
-                  <option value="Training">Training</option>
+                  <option value="" disabled>Select a category</option>
+                  {categories.map((cat) => (
+                    <option key={cat.id} value={cat.name}>
+                      {cat.name}
+                    </option>
+                  ))}
                 </select>
               </div>
 

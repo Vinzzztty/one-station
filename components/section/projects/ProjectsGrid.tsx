@@ -21,7 +21,7 @@ export interface Project {
 
 const CATEGORIES = [
     "All",
-    "ERP Solution",
+    "ERP Solutions",
     "Mobile Development",
     "Website Development",
     "Chatbot",

@@ -11,7 +11,7 @@ export default async function ERPPortfolioSection() {
     // Since we don't know the exact category names in DB without checking data, 
     // we'll try a flexible approach or just fetch 'ERP'.
 
-    const dbProjects = await getProjectsByCategory("ERP Solution");
+    const dbProjects = await getProjectsByCategory("ERP Solutions");
 
     // Transform Prisma projects to the PortfolioProject interface expected by the client component
     // We map 'description' to the fields needed. 

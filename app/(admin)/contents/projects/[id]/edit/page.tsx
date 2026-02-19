@@ -1,4 +1,5 @@
 import { getProjectById } from "@/services/projects.service";
+import { getAllCategories } from "@/services/category.service";
 import EditProjectForm from "./EditProjectForm";
 import { notFound } from "next/navigation";
 
@@ -11,10 +12,16 @@ interface EditProjectPageProps {
 export default async function EditProjectPage(props: EditProjectPageProps) {
   const params = await props.params;
   const project = await getProjectById(params.id);
+  const categoriesRaw = await getAllCategories();
+  
+  const categories = categoriesRaw.map((c) => ({
+    id: c.id,
+    name: c.name,
+  }));
 
   if (!project) {
     notFound();
   }
 
-  return <EditProjectForm project={project} />;
+  return <EditProjectForm project={project} categories={categories} />;
 }
